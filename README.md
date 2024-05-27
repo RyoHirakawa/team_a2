@@ -1,7 +1,8 @@
 # team a2's project
 
 # DB環境変数の設定
-プロジェクトフォルダ(= build.gradleがある階層)に .env ファイルを作成し、中身を以下のようにする（${DATABASE_URL}などを自身で使用するものに書き換えてください）
+プロジェクトフォルダ(= build.gradleがある階層)に .env ファイルを作成し、中身を以下のようにする。
+${DATABASE_URL}、${DATABASE_USER}、${DATABASE_PASSWORD}を自身で使用するものに書き換えてください。
 ```
 spring.application.name=sample
 spring.datasource.url=${DATABASE_URL}
