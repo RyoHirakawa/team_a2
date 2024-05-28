@@ -7,7 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
@@ -16,10 +17,6 @@ import lombok.Data;
 @Data
 public class Student {
 	
-	public enum Gender {
-		MALE, FEMALE, OTHER
-	};
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,11 +27,30 @@ public class Student {
     @Temporal(TemporalType.DATE)
     private Date birthdate;
     
-    private Gender gender;
+    private com.example.sample.enums.Gender gender;
     
-
-    @ManyToOne
-    @JoinColumn(name = "schoolClass_id")
-    private SchoolClass schoolClass;
+    private com.example.sample.enums.Grade grade; //FIRST, SECOND, THIRD
+//    @ManyToOne
+//    @JoinColumn(name = "grade1Class_id")
+//    private SchoolClass grade1Class;
+//    
+//    @ManyToOne
+//    @JoinColumn(name = "grade2Class_id")
+//    private SchoolClass grade2Class;
+//    
+//    @ManyToOne
+//    @JoinColumn(name = "grade3Class_id")
+//    private SchoolClass grade3Class;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "student_school_class",
+        joinColumns = @JoinColumn(name = "student_id"),
+        inverseJoinColumns = @JoinColumn(name = "school_class_id")
+    )
+    private java.util.Map<String, SchoolClass> classes;
+    //schoolClass["First"] <= 1年のクラス 
+    //schoolClass["Second"] <= 2年のクラス
+    //schoolClass["Third"] <= 3年のクラス
 
 }

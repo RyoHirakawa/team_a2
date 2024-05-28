@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add School Class</title>
+</head>
+<body>
+    <h2>Add School Class</h2>
+    <form action="/saveSchoolClass" method="post">
+        <label for="name">Class Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="grade">Grade:</label><br>
+        <select id="grade" name="grade" required>
+            <option value="FIRST">First</option>
+            <option value="SECOND">Second</option>
+            <option value="THIRD">Third</option>
+        </select><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

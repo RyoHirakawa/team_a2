@@ -22,7 +22,9 @@ public class SecurityConfig {
     		.loginPage("/login") //  loginが必要な時、このURLに対応するページを送出する
             .permitAll()) //  フォーム認証画面は認証不要
         .authorizeHttpRequests(authz -> authz
-            .requestMatchers("/css/**","/login","/signup", "/register", "/list/**").permitAll() // CSSファイルは認証不要
+            .requestMatchers("/css/**","/login","/signup", "/register").permitAll() // CSSファイルは認証不要
+            .requestMatchers("/list/**").permitAll()
+            .requestMatchers("/list/*").permitAll()
             .requestMatchers("/").permitAll() //  トップページは認証不要
             .requestMatchers("/create/**").hasRole("ADMIN")  // アクセス制限
             .requestMatchers("/delete/**").hasRole("ADMIN")  // アクセス制限

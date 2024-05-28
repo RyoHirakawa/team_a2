@@ -11,4 +11,9 @@ public class ListController {
 	public String list() {
 		return "list/top";
 	}
+	
+	@GetMapping("/class/create")
+	public String createSchoolClass() {	
+		return "list/class/createClass";
+	}
 }
