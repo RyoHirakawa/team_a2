@@ -1,8 +1,8 @@
 package com.example.sample.service;
 
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,12 +20,12 @@ public class LoginUserDetails implements UserDetails {
   private final Collection <? extends GrantedAuthority> authorities;
   
   public LoginUserDetails(User user) {
-    this.email = user.getEmail();
-    this.password = user.getPassword(); 
-    this.name = user.getName();
-    this.authorities = Arrays.stream(user.getRoles().split(","))
-        .map(role -> new SimpleGrantedAuthority(role))
-        .toList();
+	  this.email = user.getEmail();
+	    this.password = user.getPassword();
+	    this.name = user.getName();
+	    this.authorities = user.getRoles().stream()
+	        .map(role -> new SimpleGrantedAuthority("ROLE_"+role.getName()))
+	        .collect(Collectors.toSet());
   }
 
   @Override

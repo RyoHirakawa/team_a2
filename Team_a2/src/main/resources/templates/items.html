@@ -1,46 +1,60 @@
-  <!DOCTYPE html>
-- <html xmlns:th="http://www.thymeleaf.org">
-+ <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-  <link th:href="@{/css/style.css}" rel="stylesheet">
-  <head>
-  <meta charset="UTF-8">
-  <title>商品一覧</title>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>商品一覧</title>
+</head>
+
+<body>
     <h1>商品一覧</h1>
+    <h2 sec:authorize="hasRole('ROLE_USER')">商品一覧</h2>
+    <h2 sec:authorize="hasRole('USER')">商</h2>
+    <h2 sec:authorize="hasRole('ROLE_ADMIN')">品一覧</h2>
+    <h2 sec:authorize="hasRole('ADMIN')">一覧</h2>
+	<p th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Role: Admin</p>
+
     <table>
-      <tr>
-        <th>ID</th>
-        <th>商品名</th>
-        <th>価格</th>
-        <th>在庫数</th>
-        <th>更新</th>
--       <th>削除</th>
-+       <th sec:authorize="hasRole('ADMIN')">削除</th>
-      </tr>
-      <tr th:each="item:${items}">
-        <td th:text="${item.id}"></td>
-        <td th:text="${item.name}"></td>
-        <td th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')}" class="right"></td>
-        <td th:text="${#numbers.formatInteger(item.stockQuantity, 0, 'COMMA')}" class="right"></td>
-        <td>
-            <a th:href="@{/update/__${item.id}__}">更新</a>
-        </td>
--       <td>
-+       <td sec:authorize="hasRole('ADMIN')">
-            <form th:action="@{/delete}" method="post">
-                <input type="hidden" name="id" th:value="${item.id}">
-                <button>削除</button>
-            </form>
-          </td>
-      </tr>
+        <tr>
+            <th>ID</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>在庫数</th>
+            <th>更新</th>
+            <th sec:authorize="hasRole('ADMIN')">削除</th>
+        </tr>
+        <tr th:each="item:${items}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')}" class="right"></td>
+            <td th:text="${#numbers.formatInteger(item.stockQuantity, 0, 'COMMA')}" class="right"></td>
+            <td>
+                <a th:href="@{/update/__${item.id}__}">更新</a>
+            </td>
+            <td sec:authorize="hasRole('ADMIN')">
+                <form th:action="@{/delete}" method="post">
+                    <input type="hidden" name="id" th:value="${item.id}">
+                    <button>削除</button>
+                </form>
+            </td>
+        </tr>
     </table>
     <br>
-+   <div sec:authorize="hasRole('ADMIN')">
-       <a th:href="@{/create}" class="linkButton">新規登録</a>
-+   </div>
-+   <form th:action="@{/logout}" method="post">
-    <input type="submit" name="logout" value="ログアウト" />
-  </form>
-  </body>
-  </html>
+    <div sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/create}" class="linkButton">新規登録</a>
+    </div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" name="logout" value="ログアウト" />
+    </form>
+    <!-- ADMIN権限のボタン -->
+    <button th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">管理者専用ボタン</button>
+
+    <!-- USER権限のボタン -->
+    <button th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">ユーザー専用ボタン</button>
+
+    <!-- どちらの権限にも属していない場合のボタン -->
+    <button th:unless="${#authorization.expression('hasAnyRole(''ROLE_ADMIN'', ''ROLE_USER'')')}">一般ユーザー専用ボタン</button>
+</body>
+
+</html>

@@ -1,7 +1,10 @@
 package com.example.sample.controller;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -18,11 +21,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.sample.form.ItemForm;
 import com.example.sample.model.Item;
 import com.example.sample.repository.ItemRepository;
+import com.example.sample.service.LoginUserDetailService;
 
 @Controller
 public class ItemController {
 
 	private final ItemRepository itemRepository;
+	
+	@Autowired
+	private LoginUserDetailService userService;
 
 	public ItemController(ItemRepository itemRepository) {
 		this.itemRepository = itemRepository;
@@ -36,13 +43,22 @@ public class ItemController {
 
 	// 商品一覧表示
 	@GetMapping("/items")
-	public String items(Model model) {
+	public String items(Model model, Principal principal) {
 		List<Item> itemList = itemRepository.findByOrderById();
+		  // ログインユーザーのユーザー名を取得
+        String username = principal.getName();
+        
+        // ログインユーザーの権限を取得
+        Set<String> userRoles = userService.getUserRoles(username);
+        
+        // モデルにユーザーの権限をセット
+        model.addAttribute("userRoles", userRoles);
 		model.addAttribute("items", itemList);
 
 		return "items";
 	}
-
+	
+	
 	// [新規登録]
 	@GetMapping("/create")
 	public String create(Model model) {
@@ -92,6 +108,7 @@ public class ItemController {
 			BindingResult bindingResult) {
 		
 		if (bindingResult.hasErrors()) {
+			System.out.println("変更できませんでした");
 			return "update";
 		}
 		

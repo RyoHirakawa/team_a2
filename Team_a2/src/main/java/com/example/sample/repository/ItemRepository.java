@@ -8,4 +8,7 @@ import com.example.sample.model.Item;
 
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 	List<Item> findByOrderById();
+
+	Object findByName(String string);
+	
 }
