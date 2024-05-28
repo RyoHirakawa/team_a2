@@ -1,6 +1,9 @@
 package com.example.sample.model;
 
 import java.sql.Date;
+import java.util.HashMap;
+
+import com.example.sample.enums.Grade;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,8 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
@@ -24,7 +25,7 @@ public class Student {
     private String firstName;
     private String lastName;
     
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     private Date birthdate;
     
     private com.example.sample.enums.Gender gender;
@@ -48,9 +49,9 @@ public class Student {
         joinColumns = @JoinColumn(name = "student_id"),
         inverseJoinColumns = @JoinColumn(name = "school_class_id")
     )
-    private java.util.Map<String, SchoolClass> classes;
-    //schoolClass["First"] <= 1年のクラス 
-    //schoolClass["Second"] <= 2年のクラス
-    //schoolClass["Third"] <= 3年のクラス
+    private java.util.Map<Grade, SchoolClass> classes = new HashMap<Grade, SchoolClass>();
+    //schoolClass[First] <= 1年のクラス 
+    //schoolClass[Second] <= 2年のクラス
+    //schoolClass[Third] <= 3年のクラス
 
 }

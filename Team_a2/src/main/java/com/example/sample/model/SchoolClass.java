@@ -27,6 +27,10 @@ public class SchoolClass {
     @OneToMany(mappedBy = "classes")
     private Set<Student> students;
     
+    public SchoolClass() {
+    	
+    }
+    
     public SchoolClass(String name, Grade grade) {
     	this.name = name;
     	this.grade = grade;
