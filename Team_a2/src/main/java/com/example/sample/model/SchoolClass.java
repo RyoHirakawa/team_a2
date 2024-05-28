@@ -9,8 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.Data;
 
 @Entity
+@Data
+
 public class SchoolClass {
 	
     @Id
@@ -23,5 +26,9 @@ public class SchoolClass {
 
     @OneToMany(mappedBy = "classes")
     private Set<Student> students;
-
+    
+    public SchoolClass(String name, Grade grade) {
+    	this.name = name;
+    	this.grade = grade;
+    }
 }
