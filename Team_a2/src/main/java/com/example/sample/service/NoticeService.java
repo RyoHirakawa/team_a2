@@ -21,5 +21,9 @@ public class NoticeService {
     public void saveNotice(Notice notice) {
         noticeRepository.save(notice);
     }
+    
+    public void deleteNoticeById(Long id) {
+        noticeRepository.deleteById(id);
+    }
 }
 

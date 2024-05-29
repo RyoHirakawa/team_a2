@@ -8,10 +8,13 @@
     <a href="/Notice/add">連絡事項追加</a>
     <div>
         <ul>
-            <li th:each="notice : ${allNotices}">
-                <h2 th:text="${notice.title}"></h2>
-                <p th:text="${notice.content}"></p>
-            </li>
+			<form th:action="@{/Notice/delite}" th:object="${notice}" method="post">
+	            <li th:each="notice : ${allNotices}">
+	                <h2 th:text="${notice.title}"></h2>
+	                <p th:text="${notice.content}"></p>
+					<a th:href="@{Notice/delete/{id}(id=${notice.id})}">Delete</a>
+	            </li>
+			</form>
         </ul>
     </div>
 </body>

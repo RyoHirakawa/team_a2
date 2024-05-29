@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,6 +34,12 @@ public class NoticeController {
     @PostMapping("/save")
     public String saveNotice(@ModelAttribute("notice") Notice notice) {
         noticeService.saveNotice(notice);
+        return "redirect:/Notice";
+    }
+    
+    @GetMapping("/delete/{id}")
+    public String deleteNotice(@PathVariable("id") Long id) {
+        noticeService.deleteNoticeById(id);
         return "redirect:/Notice";
     }
 }
