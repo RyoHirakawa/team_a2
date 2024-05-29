@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>連絡事項追加画面</h1>
-    <form th:action="@{/saveNotice}" th:object="${notice}" method="post">
+    <form th:action="@{/Notice/save}" th:object="${notice}" method="post">
         <label for="title">件名:</label>
         <input type="text" id="title" th:field="*{title}" /><br/>
 
