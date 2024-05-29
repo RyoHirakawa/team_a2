@@ -12,7 +12,10 @@
 	            <li th:each="notice : ${allNotices}">
 	                <h2 th:text="${notice.title}"></h2>
 	                <p th:text="${notice.content}"></p>
-					<a th:href="@{Notice/delete/{id}(id=${notice.id})}">Delete</a>
+<!--					<p>作成日: <span th:text="${notice.createdAt}"></span></p>-->
+<!--					<p>編集日: <span th:text="${notice.updatedAt}"></span></p>-->
+					<a th:href="@{Notice/edit/{id}(id=${notice.id})}">編集</a>
+					<a th:href="@{Notice/delete/{id}(id=${notice.id})}">削除</a>
 	            </li>
 			</form>
         </ul>
