@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>pdfを追加</title>
+</head>
+<body>
+    <h1>PDFを追加</h1>
+    <form action="#" th:action="@{/documents/documentShareList}" th:object="${documentShare}" method="post" enctype="multipart/form-data">
+        <label for="category">カテゴリー:</label>
+		<input type="text" name="category" th:field="*{category}" />
+        <br/>
+        <label for="documentPath">パス:</label>
+		<input type="text" name="pdfFilePass" th:field="*{pdfFilePass}" />
+        <br/>
+		<label for="title">タイトル:</label>
+		<input type="text" name="title" th:field="*{title}" />
+		<br/>
+        <button type="submit">追加</button>
+    </form>
+</body>
+</html>
