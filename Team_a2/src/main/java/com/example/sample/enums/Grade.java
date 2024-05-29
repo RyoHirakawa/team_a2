@@ -3,17 +3,17 @@ package com.example.sample.enums;
 public enum Grade {
 	FIRST, SECOND, THIRD, GRADUATED;
 
-	public String getNumber() {
+	public String getNumber() {		
 		switch (this) {
-		case FIRST:
+		case FIRST:			
 			return "1";
 		case SECOND:
 			return "2";
 		case THIRD:
 			return "3";
 		case GRADUATED:
-			return "卒";			
-		default:
+			return "卒";		
+		default:			
 			throw new IllegalArgumentException("Unknown grade: " + this);
 		}
 	}

@@ -11,13 +11,15 @@
 <!--                <th>ID</th>-->
                 <th>学年</th>
                 <th>組</th>                
+				<th>リンク</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="schoolClass : ${schoolClasses}">
 <!--                <td th:text="${schoolClass.id}"></td>-->                
                 <td th:text="${schoolClass.grade.getNumber() + '年'}"></td>        
-				<td th:text="${schoolClass.name} + '組'"></td>        
+				<td th:text="${schoolClass.name} + '組'"></td>
+				<td><a th:href="@{/list/class/detail/{id}(id=${schoolClass.id})}">詳細へ</a></td>        
             </tr>
         </tbody>
     </table>

@@ -8,6 +8,7 @@
     <title>All Students</title>
 </head>
 <body>
+	<h1 th:text="${students}"></h1>
     <h1>All Students</h1>
     <table>
         <thead>
@@ -18,10 +19,11 @@
                 <th>誕生日</th>
                 <th>性別</th>
                 <th>学年</th>
+				<th>アクション</th>
             </tr>
         </thead>
         <tbody>
-            <!-- 生徒一覧の表示 -->
+             生徒一覧の表示 
             <th:block th:each="student : ${students}">
                 <tr>
                     <td th:text="${student.id}"></td>
@@ -30,6 +32,7 @@
                     <td th:text="${student.birthdate}"></td>
                     <td th:text="${student.gender.getName()}"></td>
                     <td th:text="${student.grade.getNumber()}"></td>
+					<td><a th:href="@{/list/student/edit/{id}(id=${student.id})}">編集</a></td>
                 </tr>
             </th:block>
         </tbody>
