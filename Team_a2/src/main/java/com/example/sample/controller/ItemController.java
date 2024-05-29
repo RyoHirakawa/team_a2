@@ -36,10 +36,10 @@ public class ItemController {
 	}
 
 	// トップページ表示
-	@GetMapping("/")
-	public String index() {
-		return "top";
-	}
+//	@GetMapping("/")
+//	public String index() {
+//		return "top";
+//	}
 
 	// 商品一覧表示
 	@GetMapping("/items")
