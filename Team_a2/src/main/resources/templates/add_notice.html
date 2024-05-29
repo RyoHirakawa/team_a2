@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Notice</title>
+</head>
+<body>
+    <h1>連絡事項追加画面</h1>
+    <form th:action="@{/Notice/save}" th:object="${notice}" method="post">
+        <label for="title">件名:</label>
+        <input type="text" id="title" th:field="*{title}" /><br/>
+
+        <label for="content">本文:</label>
+        <textarea id="content" th:field="*{content}"></textarea><br/>
+
+        <button type="submit">追加する</button>
+    </form>
+</body>
+</html>
