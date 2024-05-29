@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>授業資料</title>
+</head>
+
+<body>
+	<h1>授業資料: <span th:text="${category}"></span></h1>
+	<form th:action="@{/documents/addDocumentShare}" method="get">
+		<button type="submit">項目の追加</button>
+	</form>
+	<form th:action="@{/documents/search}" method="get">
+		<input type="text" name="category" placeholder="カテゴリー" />
+		<button type="submit">検索</button>
+	</form>
+	<div th:each="document : ${documents}">
+		<img th:src="@{${document.pdfFilePass}}" alt="Image for category" />
+	</div>
+
+</body>
+
+</html>

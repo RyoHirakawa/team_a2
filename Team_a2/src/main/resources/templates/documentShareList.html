@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>授業資料共有</title>
+</head>
+
+<body>
+	<h1>授業資料</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>カテゴリー</th>
+				<th>パス</th>
+				<th>タイトル</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Iterate over the list of document shares -->
+			<tr th:each="documentShare : ${documentShares}">
+				<td th:text="${documentShare.category}">カテゴリー</td>
+				<td th:text="${documentShare.pdfFilePass}">パス</td>
+				<td th:text="${documentShare.title}">タイトル</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<form th:action="@{/documents/}" method="get">
+		<button type="submit">戻る</button>
+	</form>
+
+</body>
+
+</html>
