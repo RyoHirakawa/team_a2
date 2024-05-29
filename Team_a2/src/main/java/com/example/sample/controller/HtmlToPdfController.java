@@ -84,7 +84,7 @@ public class HtmlToPdfController {
 				+ "		}\n"
 				+ "\n"
 				+ "		.question {\n"
-				+ "         width:200px;\n"
+				+ "         width:700px;\n"
 				+ "			margin-bottom: 10px;\n"
 				+ "		}\n"
 				+ "\n"
