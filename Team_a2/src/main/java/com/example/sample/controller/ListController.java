@@ -102,13 +102,9 @@ public class ListController {
 	}
 
 	@GetMapping("/student/create")
-	public String createStudent(Model model) {
-		System.out.println("今からgetAllSchoolClassですよ");
+	public String createStudent(Model model) {		
 		List<SchoolClass> schoolClasses = schoolClassService.getAllSchoolClasses();
-		System.out.println(schoolClasses.toString());
-		System.out.println("ああああああああああ");
-		model.addAttribute("schoolClasses", schoolClasses);
-		System.out.println("いいいいいいいいいいい");
+		model.addAttribute("schoolClasses", schoolClasses);		
 		return "/list/student/createStudent";
 	}
 
@@ -116,6 +112,12 @@ public class ListController {
 	public String saveStudent(Student student) {		
 		studentService.save(student);
 		return "redirect:/list/student/create";
+	}
+	
+	@PostMapping("/student/delete")
+	public String deleteStudent(@RequestParam("studentId") Long studentId) {
+		studentService.deleteStudent(studentId);
+		return "redirect:/list/student/all";
 	}
 
 	public String getMethodName(@RequestParam String param) {

@@ -12,7 +12,7 @@ public enum Grade {
 		case THIRD:
 			return "3";
 		case GRADUATED:
-			return "卒";		
+			return "卒業";		
 		default:			
 			throw new IllegalArgumentException("Unknown grade: " + this);
 		}

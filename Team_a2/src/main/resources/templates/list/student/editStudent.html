@@ -9,8 +9,7 @@
 	<title>Edit Student</title>
 </head>
 
-<body>
-	<h1 th:text="${student}"></h1>
+<body>	
 	<h1>Edit Student</h1>
 	<form th:action="@{/list/student/edit/{id}(id=${student.id})}" method="post">
 		<input type="hidden" name="id" th:value="${student.id}">

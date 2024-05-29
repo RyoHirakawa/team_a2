@@ -36,6 +36,10 @@ public class StudentService {
         return studentRepository.findById(id);
     }
     
+    public void deleteStudent(Long studentId) {
+        studentRepository.deleteById(studentId);
+    } 
+    
     
     
 }

@@ -2,37 +2,48 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register New Student</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register New Student</title>
 </head>
+
 <body>
-	<h1 th:text="${schoolClasses}"}></h1>
-    <h1>Register New Student</h1>
-    <form th:action="@{/list/student/save}" method="post">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required><br><br>
-        
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required><br><br>
-        
-        <label for="birthdate">Birthdate:</label>
-        <input type="date" id="birthdate" name="birthdate" required><br><br>
-        
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-            <option value="MALE">Male</option>
-            <option value="FEMALE">Female</option>
-            <option value="OTHER">Other</option>
-        </select><br><br>
-		<label for="schoolClass">クラス:</label>
-		<select name="schoolClass.id">
-			<option value="">組を選択</option>
-			<option th:each="schoolClass: ${schoolClasses}" th:value="${schoolClass.id}" th:text="${schoolClass.getName()}"></option>
+	<h1>Register New Student</h1>
+	<form th:action="@{/list/student/save}" method="post">
+		<label for="firstName">姓:</label>
+		<input type="text" id="firstName" name="firstName" required><br><br>
+
+		<label for="lastName">名:</label>
+		<input type="text" id="lastName" name="lastName" required><br><br>
+
+		<label for="birthdate">誕生日:</label>
+		<input type="date" id="birthdate" name="birthdate" required><br><br>
+
+		<label for="gender">性別:</label>
+		<select id="gender" name="gender" required>
+			<option value="MALE">Male</option>
+			<option value="FEMALE">Female</option>
+			<option value="OTHER">Other</option>
 		</select><br><br>
-        
-        <input type="submit" value="Register">
-    </form>
+
+		<label for="grade">学年:</label>
+		<select id="grade" name="grade" required>
+			<option value="FIRST" selected>1年</option>
+			<option value="SECOND">2年</option>
+			<option value="THIRD">3年</option>
+		</select><br><br>
+		
+		<label for="schoolClass">クラス:</label>
+		<select name="schoolClass.id" required>
+			<option value="">組を選択</option>
+			<option th:each="schoolClass: ${schoolClasses}" th:value="${schoolClass.id}"
+				th:text="${schoolClass.getName()}"></option>
+		</select><br><br>
+
+		<input type="submit" value="Register">
+	</form>
 </body>
+
 </html>
