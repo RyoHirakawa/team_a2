@@ -23,7 +23,8 @@ public class NoticeController {
 
     @GetMapping("")
     public String viewHomePage(Model model) {
-        model.addAttribute("allNotices", noticeService.getAllNotices());
+        System.out.println(noticeService.getAllNotices());
+    	model.addAttribute("allNotices", noticeService.getAllNotices());
         return "notice";
     }
 

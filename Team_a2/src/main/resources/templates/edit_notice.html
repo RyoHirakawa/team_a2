@@ -9,9 +9,12 @@
         <label for="title">件名:</label>
         <input type="text" id="title" th:field="*{title}" /><br/>
 
-        <label for="content">内容:</label>
+        <label for="content">本文:</label>
         <textarea id="content" th:field="*{content}"></textarea><br/>
-
+		
+		<p>Created at: <span th:text="${notice.createdAt}"></span></p>
+        <p>Updated at: <span th:text="${notice.updatedAt}"></span></p>
+		
         <button type="submit">更新する</button>
     </form>
 </body>
