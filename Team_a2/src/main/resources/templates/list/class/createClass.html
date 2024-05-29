@@ -8,6 +8,8 @@
 <body>
     <h2>Add School Class</h2>
     <form th:action="@{/list/class/save}" method="post">
+		<label for="year">年度:</label><br>
+		<input type="number" id="year" name="year"/>←今年の年度が自動入力されてると嬉しい<br>
         <label for="name">クラス名:</label><br>
         <input type="text" id="name" name="name" required>組<br>
         <label for="grade">Grade:</label><br>
@@ -15,7 +17,7 @@
             <option value="FIRST">１年</option>
             <option value="SECOND">２年</option>
             <option value="THIRD">３年</option>
-        </select><br>
+        </select><br>		
         <button type="submit">Submit</button>
     </form>
 </body>

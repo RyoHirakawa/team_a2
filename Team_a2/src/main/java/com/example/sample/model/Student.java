@@ -3,6 +3,7 @@ package com.example.sample.model;
 import java.sql.Date;
 import java.util.HashMap;
 
+import com.example.sample.enums.Gender;
 import com.example.sample.enums.Grade;
 
 import jakarta.persistence.Entity;
@@ -31,17 +32,6 @@ public class Student {
     private com.example.sample.enums.Gender gender;
     
     private com.example.sample.enums.Grade grade; //FIRST, SECOND, THIRD
-//    @ManyToOne
-//    @JoinColumn(name = "grade1Class_id")
-//    private SchoolClass grade1Class;
-//    
-//    @ManyToOne
-//    @JoinColumn(name = "grade2Class_id")
-//    private SchoolClass grade2Class;
-//    
-//    @ManyToOne
-//    @JoinColumn(name = "grade3Class_id")
-//    private SchoolClass grade3Class;
     
     @ManyToMany
     @JoinTable(
@@ -49,9 +39,20 @@ public class Student {
         joinColumns = @JoinColumn(name = "student_id"),
         inverseJoinColumns = @JoinColumn(name = "school_class_id")
     )
+    
     private java.util.Map<Grade, SchoolClass> classes = new HashMap<Grade, SchoolClass>();
-    //schoolClass[First] <= 1年のクラス 
-    //schoolClass[Second] <= 2年のクラス
-    //schoolClass[Third] <= 3年のクラス
+    //schoolClass[Grade.First] <= 1年のクラス 
+    //schoolClass[Grade.Second] <= 2年のクラス
+    //schoolClass[Grade.Third] <= 3年のクラス
+    
+    public Student() {}
+    
+    public Student(String firstName, String lastName, Date birthdate, Gender gender) {
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.birthdate = birthdate;
+    	this.gender = gender;
+    	this.grade = Grade.FIRST;
+    }
 
 }
