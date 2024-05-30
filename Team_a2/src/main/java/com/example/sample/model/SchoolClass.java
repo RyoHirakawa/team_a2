@@ -1,7 +1,5 @@
 package com.example.sample.model;
 
-import java.util.Set;
-
 import com.example.sample.enums.Grade;
 
 import jakarta.persistence.Entity;

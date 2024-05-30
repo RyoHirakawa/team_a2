@@ -1,7 +1,6 @@
 package com.example.sample.model;
 
 import java.sql.Date;
-import java.util.HashMap;
 
 import com.example.sample.enums.Gender;
 import com.example.sample.enums.Grade;

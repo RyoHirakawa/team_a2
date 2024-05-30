@@ -27,7 +27,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         student.setGender(Gender.MALE);
         student.setGrade(Grade.FIRST);
         System.out.println(student.toString());
-        studentService.save(student);
+        // studentService.save(student);
         System.out.println("コマンドラインランナー終了");
         // student.getClasses().put(Grade.FIRST, firstGradeClass);
     }

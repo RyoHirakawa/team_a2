@@ -28,7 +28,7 @@ public class AuthController {
 	
 	@PostMapping("/register")
 	public String register(User user) {
-		  userService.save(user, "ROLE_ADMIN" );
+		  userService.save(user);
 	      return "redirect:/login";
 	}
 }
