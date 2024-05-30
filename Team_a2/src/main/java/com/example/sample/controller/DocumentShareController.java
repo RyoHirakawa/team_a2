@@ -50,12 +50,18 @@ public class DocumentShareController {
 		return "addDocumentShare";
 	}
 
-	@GetMapping("/documentShareList")
+	@GetMapping("/share")
 	public String showTable(Model model) {
+		model.addAttribute("documentShares", service.getDocumentShareList());
+		return "share";
+	}
+
+	@GetMapping("/documentShareList")
+	public String documentShareList(Model model) {
 		model.addAttribute("documentShares", service.getDocumentShareList());
 		return "documentShareList";
 	}
-
+	
 	@PostMapping("/documentShareList")
 	public String showTables(@Validated DocumentShare documentShare, Model model) {
 		repository.save(documentShare);
