@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+	</style>
 </head>
+
 <body>
-	<h1>リストトップ</h1>
-	<a th:href="@{list/class/all}">クラス一覧へ</a>
-	<a th:href="@{list/student/all}">生徒一覧へ</a>
+	<header>
+		教師向けアプリ - 名簿
+	</header>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1>名簿</h1>
+				<a class="btn" th:href="@{list/class/all}">クラス一覧へ</a>
+				<a class="btn" th:href="@{list/student/all}">生徒一覧へ</a>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

@@ -1,32 +1,47 @@
-<!-- classStudents.html -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Students</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+	</style>
 </head>
+
 <body>
-<!--	<h1 th:text="${schoolClass}"></h1>-->
-<!--	<h1 th:text="${students}"></h1>-->
-    <table>
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Birthdate</th>
-                <th>Gender</th>
-            </tr>
-        </thead>
-        <tbody>          
-            <tr th:each="student : ${students}">
-                <td th:text="${student.firstName}"></td>
-                <td th:text="${student.lastName}"></td>
-                <td th:text="${student.birthdate}"></td>
-                <td th:text="${student.gender.getName()}"></td>                  
-            </tr>
-        </tbody>
-    </table>
+	<header>
+		教師向けアプリ - 名簿
+	</header>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1 th:text="${schoolClass.toString()}"></h1>
+				<table>
+					<thead>
+						<tr>
+							<th>姓</th>
+							<th>名</th>
+							<th>誕生日</th>
+							<th>性別</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="student : ${students}">
+							<td th:text="${student.firstName}"></td>
+							<td th:text="${student.lastName}"></td>
+							<td th:text="${student.birthdate}"></td>
+							<td th:text="${student.gender.getName()}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

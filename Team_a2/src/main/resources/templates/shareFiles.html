@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
 
 <head>
-	<title>検索結果</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+	</style>
 </head>
 
 <body>
-	<h1>検索結果一覧: <span th:text="${category}"></span></h1>
+	<header>
+		教師向けアプリ - 授業資料共有
+	</header>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1>検索結果一覧: <span th:text="${category}"></span></h1>
 
-	<!-- 検索フォーム -->
-	<form action="/documents/search" method="get">
-		<input type="text" name="category" placeholder="カテゴリー" />
-		<button type="submit">Search</button>
-	</form>
+				<!-- 検索フォーム -->
+				<form action="/documents/search" method="get">
+					<input type="text" name="category" placeholder="カテゴリー" />
+					<button type="submit">Search</button>
+				</form>
 
-	<!-- 画像リスト -->
-	<div th:if="${not #lists.isEmpty(documents)}">
-		<div th:each="document : ${documents}">
-			<img th:src="@{${document.pdfFilePass}}" alt="資料" />
+				<!-- 画像リスト -->
+				<div th:if="${not #lists.isEmpty(documents)}">
+					<div th:each="document : ${documents}">
+						<img th:src="@{${document.pdfFilePass}}" alt="資料" />
+					</div>
+				</div>
+				<div th:if="${#lists.isEmpty(documents)}">
+					<p>このカテゴリーの資料はありません。</p>
+				</div>
+				<form th:action="@{/documents/}" method="get">
+					<button type="submit">戻る</button>
+				</form>
+			</div>
 		</div>
 	</div>
-	<div th:if="${#lists.isEmpty(documents)}">
-		<p>このカテゴリーの資料はありません。</p>
-	</div>
-	<form th:action="@{/documents/}" method="get">
-		<button type="submit">戻る</button>
-	</form>
 </body>
 
 </html>

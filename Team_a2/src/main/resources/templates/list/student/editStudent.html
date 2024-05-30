@@ -1,51 +1,64 @@
-<!-- editStudent.html -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Edit Student</title>
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+	</style>
 </head>
 
-<body>	
-	<h1>Edit Student</h1>
-	<form th:action="@{/list/student/edit/{id}(id=${student.id})}" method="post">
-		<input type="hidden" name="id" th:value="${student.id}">
-		<label for="firstName">姓:</label>
-		<input type="text" id="firstName" name="firstName" th:value="${student.firstName}" required><br><br>
+<body>
+	<header>
+		教師向けアプリ - 名簿
+	</header>	
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1>生徒情報の更新</h1>
+				<form th:action="@{/list/student/edit/{id}(id=${student.id})}" method="post">
+					<input type="hidden" name="id" th:value="${student.id}">
+					<label for="firstName">姓:</label>
+					<input type="text" id="firstName" name="firstName" th:value="${student.firstName}" required><br><br>
 
-		<label for="lastName">名:</label>
-		<input type="text" id="lastName" name="lastName" th:value="${student.lastName}" required><br><br>
+					<label for="lastName">名:</label>
+					<input type="text" id="lastName" name="lastName" th:value="${student.lastName}" required><br><br>
 
-		<label for="birthdate">生年月日:</label>
-		<input type="date" id="birthdate" name="birthdate" th:value="${student.birthdate}" required><br><br>
+					<label for="birthdate">生年月日:</label>
+					<input type="date" id="birthdate" name="birthdate" th:value="${student.birthdate}" required><br><br>
 
-		<label for="gender">性別:</label>
-		<select id="gender" name="gender" required>
-			<option value="MALE" th:selected="${student.gender == 'MALE'}">男</option>
-			<option value="FEMALE" th:selected="${student.gender == 'FEMALE'}">女</option>
-			<option value="OTHER" th:selected="${student.gender == 'OTHER'}">他</option>
-		</select><br><br>
+					<label for="gender">性別:</label>
+					<select id="gender" name="gender" required>
+						<option value="MALE" th:selected="${student.gender == 'MALE'}">男</option>
+						<option value="FEMALE" th:selected="${student.gender == 'FEMALE'}">女</option>
+						<option value="OTHER" th:selected="${student.gender == 'OTHER'}">他</option>
+					</select><br><br>
 
-		<label for="gender">学年:</label>
-		<select id="gender" name="grade" required>
-			<option value="FIRST" th:selected="${student.grade == 'FIRST'}">１年</option>
-			<option value="SECOND" th:selected="${student.grade == 'SECOND'}">２年</option>
-			<option value="THIRD" th:selected="${student.grade == 'THIRD'}">３年</option>
-			<option value="GRADUATED" th:selected="${student.grade == 'GRADUATED'}">卒業</option>
-		</select><br><br>
+					<label for="gender">学年:</label>
+					<select id="gender" name="grade" required>
+						<option value="FIRST" th:selected="${student.grade == 'FIRST'}">１年</option>
+						<option value="SECOND" th:selected="${student.grade == 'SECOND'}">２年</option>
+						<option value="THIRD" th:selected="${student.grade == 'THIRD'}">３年</option>
+						<option value="GRADUATED" th:selected="${student.grade == 'GRADUATED'}">卒業</option>
+					</select><br><br>
 
-		学校クラスの選択
-		<label for="schoolClass">クラス:</label>
-		<select id="schoolClass" name="schoolClass">
-			<option th:each="schoolClass : ${schoolClasses}" th:value="${schoolClass.id}"
-				th:text="${schoolClass.getName()}"></option>
-		</select><br><br>
+					学校クラスの選択
+					<label for="schoolClass">クラス:</label>
+					<select id="schoolClass" name="schoolClass">
+						<option th:each="schoolClass : ${schoolClasses}" th:value="${schoolClass.id}"
+							th:text="${schoolClass.getName()}"></option>
+					</select><br><br>
 
-		<input type="submit" value="Save">
-	</form>
+					<input class="btn" type="submit" value="Save">
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

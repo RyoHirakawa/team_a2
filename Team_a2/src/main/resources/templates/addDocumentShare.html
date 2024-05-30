@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+
 <head>
-    <title>pdfを追加</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+	</style>
 </head>
+
 <body>
-    <h1>PDFを追加</h1>
-    <form action="#" th:action="@{/documents/documentShareList}" th:object="${documentShare}" method="post" enctype="multipart/form-data">
-        <label for="category">カテゴリー:</label>
-		<input type="text" name="category" th:field="*{category}" />
-        <br/>
-        <label for="documentPath">パス:</label>
-		<input type="text" name="pdfFilePass" th:field="*{pdfFilePass}" />
-        <br/>
-		<label for="title">タイトル:</label>
-		<input type="text" name="title" th:field="*{title}" />
-		<br/>
-        <button type="submit">追加</button>
-    </form>
+	<header>
+		教師向けアプリ - 名簿
+	</header>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1>PDFを追加</h1>
+				<form action="#" th:action="@{/documents/documentShareList}" th:object="${documentShare}" method="post"
+					enctype="multipart/form-data">
+					<label for="category">カテゴリー:</label>
+					<input type="text" name="category" th:field="*{category}" />
+					<br />
+					<label for="documentPath">パス:</label>
+					<input type="text" name="pdfFilePass" th:field="*{pdfFilePass}" />
+					<br />
+					<label for="title">タイトル:</label>
+					<input type="text" name="title" th:field="*{title}" />
+					<br />
+					<button type="submit">追加</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

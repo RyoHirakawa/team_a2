@@ -1,50 +1,64 @@
-<!-- registerStudent.html -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Register New Student</title>
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+	</style>
 </head>
 
 <body>
-	<h1>Register New Student</h1>
-	<form th:action="@{/list/student/save}" method="post">
-		<label for="firstName">姓:</label>
-		<input type="text" id="firstName" name="firstName" required><br><br>
+	<header>
+		教師向けアプリ - 名簿
+	</header>
+	<div th:replace="fragments/header :: header_fragment"></div>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1>生徒を登録</h1>
+				<form th:action="@{/list/student/save}" method="post">
+					<label for="firstName">姓:</label>
+					<input type="text" id="firstName" name="firstName" required><br><br>
 
-		<label for="lastName">名:</label>
-		<input type="text" id="lastName" name="lastName" required><br><br>
+					<label for="lastName">名:</label>
+					<input type="text" id="lastName" name="lastName" required><br><br>
 
-		<label for="birthdate">誕生日:</label>
-		<input type="date" id="birthdate" name="birthdate" required><br><br>
+					<label for="birthdate">誕生日:</label>
+					<input type="date" id="birthdate" name="birthdate" required><br><br>
 
-		<label for="gender">性別:</label>
-		<select id="gender" name="gender" required>
-			<option value="MALE">男</option>
-			<option value="FEMALE">女</option>
-			<option value="OTHER">その他</option>
-		</select><br><br>
+					<label for="gender">性別:</label>
+					<select id="gender" name="gender" required>
+						<option value="MALE">男</option>
+						<option value="FEMALE">女</option>
+						<option value="OTHER">その他</option>
+					</select><br><br>
 
-		<label for="grade">学年:</label>
-		<select id="grade" name="grade" required>
-			<option value="FIRST" selected>1年</option>
-			<option value="SECOND">2年</option>
-			<option value="THIRD">3年</option>
-		</select><br><br>
-		
-		<label for="schoolClass">クラス:</label>
-		<select name="schoolClass.id" required>
-			<option value="">組を選択</option>
-			<option th:each="schoolClass: ${schoolClasses}" th:value="${schoolClass.id}"
-				th:text="${schoolClass.toString()}"></option>
-		</select><br><br>
+					<label for="grade">学年:</label>
+					<select id="grade" name="grade" required>
+						<option value="FIRST" selected>1年</option>
+						<option value="SECOND">2年</option>
+						<option value="THIRD">3年</option>
+					</select><br><br>
 
-		<input type="submit" value="Register">
-	</form>
-	<a th:href="@{/list/student/all}">生徒一覧へ</a>
+					<label for="schoolClass">クラス:</label>
+					<select name="schoolClass.id" required>
+						<option value="">組を選択</option>
+						<option th:each="schoolClass: ${schoolClasses}" th:value="${schoolClass.id}"
+							th:text="${schoolClass.toString()}"></option>
+					</select><br><br>
+
+					<input class="btn" type="submit" value="登録">
+				</form>
+				<a class="btn" th:href="@{/list/student/all}">生徒一覧へ</a>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

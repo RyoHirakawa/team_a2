@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Add School Class</title>
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-	<h2>Add School Class</h2>
-	<form th:action="@{/list/class/save}" method="post">
-<!--		<label for="year">年度:</label><br>-->
-<!--		<input type="number" id="year" name="year" /><br>-->
-		<label for="grade">学年:</label><br>
-		<select id="grade" name="grade" required>
-			<option value="FIRST">１年</option>
-			<option value="SECOND">２年</option>
-			<option value="THIRD">３年</option>
-		</select><br>
-		<label for="name">クラス名:</label><br>
-		<input type="text" id="name" name="name" required>組<br>
-		<button type="submit">Submit</button>
-	</form>
-	<a th:href="@{/list/class/all}">クラスホームへ</a>
+	<header>
+		教師向けアプリ - 名簿
+	</header>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h2>新規クラスを作成</h2>
+				<form th:action="@{/list/class/save}" method="post">
+					<!--		<label for="year">年度:</label><br>-->
+					<!--		<input type="number" id="year" name="year" /><br>-->
+					<label for="grade">学年:</label><br>
+					<select id="grade" name="grade" required>
+						<option value="FIRST">１年</option>
+						<option value="SECOND">２年</option>
+						<option value="THIRD">３年</option>
+					</select><br>
+					<label for="name">クラス名:</label><br>
+					<input type="text" id="name" name="name" required>組<br>
+					<button class="btn" type="submit">Submit</button>
+				</form>
+				<a class="btn" th:href="@{/list/class/all}">クラスホームへ</a>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

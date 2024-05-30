@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>指導案や連絡プリント - 教師向けアプリ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Noto Sans JP', sans-serif;
@@ -94,21 +97,15 @@
         }
     </style>
 </head>
+
 <body>
-    <header>
-        教師向けアプリ - 指導案や連絡プリント
-    </header>
-    <div class="main">
-        <nav>
-           <a href="/">ホーム</a>
-            <a href="meibo">名簿</a>
-            <a href="share">授業資料共有</a>
-            <a href="kekka">テスト結果</a>
-            <a href="print">指導案や連絡プリント</a>
-            <a href="renraku_add">連絡事項追加</a>
-        </nav>
-        <div class="container">
-            <div class="card">
+	<header>
+		教師向けアプリ - 指導案/連絡プリント
+	</header>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
                 <h2>指導案や連絡プリント</h2>
                 <p>指導案や連絡プリントのテンプレートを作成し、印刷できます。</p>
                 <form action="submit_print.php" method="post">

@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+
 <head>
-    <title>Add Notice</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style></style>
 </head>
+
 <body>
-    <h1>連絡事項追加画面</h1>
-    <form th:action="@{/Notice/save}" th:object="${notice}" method="post">
-        <label for="title">件名:</label>
-        <input type="text" id="title" th:field="*{title}" /><br/>
+	<header>
+		教師向けアプリ - 名簿
+	</header>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1>連絡事項追加画面</h1>
+				<form th:action="@{/Notice/save}" th:object="${notice}" method="post">
+					<label for="title">件名:</label>
+					<input type="text" id="title" th:field="*{title}" /><br />
 
-        <label for="content">本文:</label>
-        <textarea id="content" th:field="*{content}"></textarea><br/>
+					<label for="content">本文:</label>
+					<textarea id="content" th:field="*{content}"></textarea><br />
 
-        <button type="submit">追加する</button>
-    </form>
+					<button class="btn" type="submit">追加する</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
 
 <head>
-	<title>授業資料共有</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style></style>
 </head>
 
 <body>
-	<h1>授業資料</h1>
+	<header>
+		教師向けアプリ - 授業資料共有
+	</header>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1>授業資料</h1>
 
-	<table>
-		<thead>
-			<tr>
-				<th>カテゴリー</th>
-				<th>パス</th>
-				<th>タイトル</th>
-			</tr>
-		</thead>
-		<tbody>
-			<!-- Iterate over the list of document shares -->
-			<tr th:each="documentShare : ${documentShares}">
-				<td th:text="${documentShare.category}">カテゴリー</td>
-				<td th:text="${documentShare.pdfFilePass}">パス</td>
-				<td th:text="${documentShare.title}">タイトル</td>
-			</tr>
-		</tbody>
-	</table>
-	
-	<form th:action="@{/documents/}" method="get">
-		<button type="submit">戻る</button>
-	</form>
+				<table>
+					<thead>
+						<tr>
+							<th>カテゴリー</th>
+							<th>パス</th>
+							<th>タイトル</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Iterate over the list of document shares -->
+						<tr th:each="documentShare : ${documentShares}">
+							<td th:text="${documentShare.category}">カテゴリー</td>
+							<td th:text="${documentShare.pdfFilePass}">パス</td>
+							<td th:text="${documentShare.title}">タイトル</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<form th:action="@{/documents/}" method="get">
+					<button type="submit">戻る</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 

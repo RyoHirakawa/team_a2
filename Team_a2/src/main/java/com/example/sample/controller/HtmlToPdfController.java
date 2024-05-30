@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
@@ -21,10 +22,10 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class HtmlToPdfController {
 
-//	@GetMapping("/")
-//	public String index() {
-//		return "templateedit";
-//	}
+	@GetMapping("/TestPdf")
+	public String index() {
+		return "templateedit";
+	}
 
 //	@GetMapping("/new")
 //	public String index2() {

@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+
 <head>
-<!--    <title>School Classes for [[${year}]]</title>-->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>教師向けアプリ - </title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+	</style>
 </head>
+
 <body>
-    <h1>[[${year}]]年度のクラス</h1>
-    <table>
-        <thead>
-            <tr>
-<!--                <th>ID</th>-->
-                <th>学年</th>
-                <th>組</th>                
-				<th>リンク</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="schoolClass : ${schoolClasses}">
-<!--                <td th:text="${schoolClass.id}"></td>-->                
-                <td th:text="${schoolClass.grade.getNumber() + '年'}"></td>        
-				<td th:text="${schoolClass.name} + '組'"></td>
-				<td><a th:href="@{/list/class/detail/{id}(id=${schoolClass.id})}">詳細へ</a></td>        
-            </tr>
-        </tbody>
-    </table>
-<!--    <a th:href="@{/}">Back to Year Selection</a>-->
+	<header>
+		教師向けアプリ - 名簿
+	</header>
+	<div th:replace="fragments/header :: header_fragment"></div>
+	<div class="main">
+		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<div class="container">
+			<div class="card">
+				<h1>[[${year}]]年度のクラス</h1>
+				<table>
+					<thead>
+						<tr>
+							<th>学年</th>
+							<th>組</th>
+							<th>リンク</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="schoolClass : ${schoolClasses}">
+
+							<td th:text="${schoolClass.grade.getNumber() + '年'}"></td>
+							<td th:text="${schoolClass.name} + '組'"></td>
+							<td><a th:href="@{/list/class/detail/{id}(id=${schoolClass.id})}">詳細へ</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
 
 

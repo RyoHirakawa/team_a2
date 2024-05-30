@@ -27,7 +27,7 @@ public class DocumentShareController {
 	@Autowired
 	DocumentShareRepository repository;
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String getImagesByCategory(Model model) {
 		List<DocumentShare> documents = repository.findAllByOrderByCategoryAsc();
 		Map<String, List<DocumentShare>> documentsByCategory = documents.stream()

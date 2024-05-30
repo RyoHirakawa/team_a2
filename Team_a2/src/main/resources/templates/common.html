@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- th:replaceを使用して、 <head>用のフラグメントを読込みます -->
+
+<head th:replace="fragments/head :: head_fragment(title = 'サンプルアプリケーション', scripts = ~{::script}, links = ~{::link})">
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header_fragment"></div>
+
+	<div class="wrapper">
+		<div th:replace="fragments/sidebar :: sidebar_fragment"></div>
+		<div class="container">
+			
+		
+			//ここに記述
+				
+				
+		</div>
+	</div>
+
+
+	<div th:replace="fragments/footer :: footer_fragment"></div>
+</body>
+
+</html>
