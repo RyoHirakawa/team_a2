@@ -1,5 +1,7 @@
 package com.example.sample.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,8 @@ public class NoticeController {
 
     @GetMapping("")
     public String viewHomePage(Model model) {
-        model.addAttribute("allNotices", noticeService.getAllNotices());
+        System.out.println(noticeService.getAllNotices());
+    	model.addAttribute("allNotices", noticeService.getAllNotices());
         return "notice";
     }
 
@@ -40,6 +43,26 @@ public class NoticeController {
     @GetMapping("/delete/{id}")
     public String deleteNotice(@PathVariable("id") Long id) {
         noticeService.deleteNoticeById(id);
+        return "redirect:/Notice";
+    }
+    
+    @GetMapping("/edit/{id}")
+    public String showEditNoticeForm(@PathVariable("id") Long id, Model model) {
+        Optional<Notice> notice = noticeService.getNoticeById(id);
+        if (notice.isPresent()) {
+            model.addAttribute("notice", notice.get());
+            return "edit_notice";
+        } else {
+            return "redirect:/Notice";
+        }
+    }
+    
+    @PostMapping("/update/{id}")
+    public String updateNotice(@PathVariable("id") Long id, @ModelAttribute("notice") Notice notice) {
+        Notice existingNotice = noticeService.getNoticeById(id).orElseThrow(() -> new IllegalArgumentException("Invalid notice Id:" + id));
+        existingNotice.setTitle(notice.getTitle());
+        existingNotice.setContent(notice.getContent());
+        noticeService.saveNotice(existingNotice);
         return "redirect:/Notice";
     }
 }
