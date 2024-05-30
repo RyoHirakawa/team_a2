@@ -93,11 +93,21 @@ public class ListController {
 		//		model.addAttribute();
 //		return "/list/student/showStudent";
 //	}
-
 	@GetMapping("/student/all")
-	public String showAllStudent(Model model) {
+	public String showAllStudent(
+			@RequestParam(required = false) String name,
+			@RequestParam(required = false) String grade,
+			@RequestParam(required = false) String schoolClass, 
+			@RequestParam(required = false) String gender,			
+			Model model) {
 		List<Student> allStudents = studentService.getAllStudents();
-		model.addAttribute("students", allStudents);
+		List<Student> students = studentService.filterStudents(allStudents, name, grade, schoolClass, gender);
+		model.addAttribute("students", students);
+		
+		model.addAttribute("name", name);
+		model.addAttribute("grade", grade);
+		model.addAttribute("schoolClass", schoolClass);
+		model.addAttribute("gender", gender);
 		return "/list/student/showAllStudent";
 	}
 
