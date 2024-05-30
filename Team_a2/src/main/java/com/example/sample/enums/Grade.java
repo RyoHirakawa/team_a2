@@ -18,6 +18,21 @@ public enum Grade {
 		}
 	}
 	
+	public int toInteger() {		
+		switch (this) {
+		case FIRST:			
+			return 1;
+		case SECOND :
+			return 2;
+		case THIRD:
+			return 3;
+		case GRADUATED:
+			return 4;		
+		default:			
+			throw new IllegalArgumentException("Unknown grade: " + this);
+		}
+	}
+	
 	public Grade getNext() {
 		switch (this) {
 		case FIRST:

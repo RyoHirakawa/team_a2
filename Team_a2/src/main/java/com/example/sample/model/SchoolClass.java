@@ -21,22 +21,16 @@ public class SchoolClass {
     
     private Grade grade; //FIRST, SECOND, THIRD: １年, ２年, ３年
     
-    private int year; //何年度のクラスか
 
-//    @OneToMany(mappedBy = "schoolClass")
-//    private java.util.List<Student> students;
-    
     public SchoolClass() {    	
     }
     
-    public SchoolClass(String name, Grade grade, int year) {
+    public SchoolClass(String name, Grade grade) {
     	this.name = name;
     	this.grade = grade;
-    	this.year = year;
-//    	this.students = new ArrayList<Student>();
     }
     
-    public String getName() {
-    	return this.year + "年度" + this.grade.getNumber() + "年" + this.name + "組";
+    public String toString() {
+    	return this.grade.getNumber() + "年" + this.name + "組";
     }
 }

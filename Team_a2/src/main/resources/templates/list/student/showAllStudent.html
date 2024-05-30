@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Students</title>
 </head>
-<body>	
+<body>
     <h1>All Students（todo:検索機能）</h1>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
+				<th>学年</th>
+				<th>クラス</th>
                 <th>姓</th>
                 <th>名</th>
                 <th>誕生日</th>
                 <th>性別</th>
-                <th>学年</th>
 				<th>アクション</th>
             </tr>
         </thead>
@@ -26,11 +27,12 @@
             <th:block th:each="student : ${students}">
                 <tr>
                     <td th:text="${student.id}"></td>
+					<td th:text="${student.SchoolClass.grade.getNumber()}"></td>
+					<td th:text="${student.SchoolClass.name}"></td>
                     <td th:text="${student.firstName}"></td>
                     <td th:text="${student.lastName}"></td>
                     <td th:text="${student.birthdate}"></td>
-                    <td th:text="${student.gender.getName()}"></td>
-                    <td th:text="${student.grade.getNumber()}"></td>
+                    <td th:text="${student.gender.getName()}"></td>					
 					<td>
 						<a th:href="@{/list/student/edit/{id}(id=${student.id})}">編集</a>
 						<form th:action="@{/list/student/delete}" method="post">
