@@ -19,16 +19,16 @@ public class MyCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
     	System.out.println("コマンドラインランナー開始");
-        // Studentを登録する        
+        // Studentを登録する
         Student student = new Student();
         student.setFirstName("John");
-        student.setLastName("Doe");        
+        student.setLastName("Doe");
         student.setBirthdate(Date.valueOf("2000-01-01")); 
         student.setGender(Gender.MALE);
         student.setGrade(Grade.FIRST);
         System.out.println(student.toString());
         studentService.save(student);
         System.out.println("コマンドラインランナー終了");
-//        student.getClasses().put(Grade.FIRST, firstGradeClass);
+        // student.getClasses().put(Grade.FIRST, firstGradeClass);
     }
 }
