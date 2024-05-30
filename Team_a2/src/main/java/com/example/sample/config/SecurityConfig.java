@@ -20,8 +20,7 @@ public class SecurityConfig {
 		http.formLogin(login -> login //  フォーム認証を使う
 				.loginPage("/login") //  loginが必要な時、このURLに対応するページを送出する
 				.permitAll()) //  フォーム認証画面は認証不要
-				.authorizeHttpRequests(authz -> authz
-						.requestMatchers("/**").permitAll()
+				.authorizeHttpRequests(authz -> authz						
 						.requestMatchers("/css/**", "/login", "/signup", "/register").permitAll() // CSSファイルは認証不要          
 						.requestMatchers("/").permitAll() //  トップページは認証不要
 						.requestMatchers("/create/**").hasRole("ADMIN") // アクセス制限
