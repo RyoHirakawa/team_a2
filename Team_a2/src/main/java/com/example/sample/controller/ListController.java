@@ -1,5 +1,6 @@
 package com.example.sample.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ import com.example.sample.model.SchoolClass;
 import com.example.sample.model.Student;
 import com.example.sample.service.SchoolClassService;
 import com.example.sample.service.StudentService;
+import com.example.sample.util.SchoolClassComparator;
 
 @Controller
 @RequestMapping("/list")
@@ -45,7 +47,7 @@ public class ListController {
 	@GetMapping("/class/all")
 	public String showAllClass(Model model) {
 		java.util.List<SchoolClass> schoolClasses = schoolClassService.findAll();
-		
+		Collections.sort(schoolClasses, new SchoolClassComparator());
 		model.addAttribute("schoolClasses", schoolClasses);
 		return "list/class/showAllClass";
 	}
