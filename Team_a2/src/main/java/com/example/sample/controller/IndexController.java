@@ -7,33 +7,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
 	@GetMapping("/")
-	public String index() {
+	public String getindex() {
 		return "home";
 	}
-
 	@GetMapping("/meibo")
-	public String meibo() {
+	public String getmeibo() {
 		return "meibo";
 	}
-	
 	@GetMapping("/share")
-	public String share() {
+	public String getshare() {
 		return "share";
 	}
-	
 	@GetMapping("/kekka")
-	public String kekka() {
+	public String getkekka() {
 		return "kekka";
 	}
-	
 	@GetMapping("/print")
-    public String print() {
-        return "print";
-    }
-	
-	@GetMapping("/renraku_add")
-	public String renrakuAdd() {
-		return "renraku_add";
+	public String getprint() {
+		return "print";
 	}
+	
+	
+	
 
 }
