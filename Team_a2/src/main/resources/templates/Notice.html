@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
@@ -107,15 +107,18 @@
 			<a href="/Notice">連絡事項</a>
 		</nav>
 		<div class="container">
+			<a href="/Notice/add">連絡事項追加</a>
 			<div class="card">
-				<h2>連絡事項追加</h2>
-				<form th:action="@{/Notice/save}" th:object="${notice}" method="post">
-					<label for="notice-title">タイトル:</label>
-					<input type="text" id="notice-title" th:field="*{title}" required>
-					<label for="notice-content">内容:</label>
-					<textarea id="notice-content" th:field="*{content}" rows="10" required></textarea>
-					<button type="submit" class="btn">保存</button>
-				</form>
+				<ul>
+					<li th:each="notice : ${allNotices}">
+						<h2 th:text="${notice.title}"></h2>
+						<p th:text="${notice.content}"></p>
+						<p>作成日: <span th:text="${notice.createdAt}"></span></p>
+						<p>編集日: <span th:text="${notice.updatedAt}"></span></p>
+						<a th:href="@{/Notice/edit/{id}(id=${notice.id})}">編集</a>
+						<a th:href="@{/Notice/delete/{id}(id=${notice.id})}">削除</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
