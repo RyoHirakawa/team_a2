@@ -119,13 +119,14 @@
                 <input type="text" th:field="*{name}" />
             </div>
             <div class="roles_box">
-                <label>役割:</label>
-                <input type="text" th:field="*{roles}" />
+               
+                <input type="hidden" th:field="*{roles}"/>
             </div>
             <div>
                 <button type="submit">新規登録</button>
             </div>
         </form>
+		<p><a th:href="@{/login}">ログイン</a></p>
     </div>
 </body>
 

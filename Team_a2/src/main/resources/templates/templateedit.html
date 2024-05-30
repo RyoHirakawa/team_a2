@@ -55,7 +55,7 @@
 
 <body>
 	<div class="container">
-		<form action="/TestPdf" method="post" onsubmit="return checkFileName()">
+		<form th:action="@{/TestPdf}" method="post" onsubmit="return checkFileName()">
 			<div class="questions">
 				<div class="question-group">
 					<h3>大問１</h3>
@@ -116,7 +116,7 @@
 							placeholder="問題文20"></div>
 				</div>
 
-				<input type="text" name="file" placeholder="ファイル名">
+				<input id="fileInput" type="text" name="file" placeholder="ファイル名">
 				<button type="submit">テンプレートを生成</button>
 			</div>
 		</form>
