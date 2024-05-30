@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--    <title>School Classes for [[${year}]]</title>-->
+</head>
+<body>
+    <h1>[[${year}]]年度のクラス</h1>
+    <table>
+        <thead>
+            <tr>
+<!--                <th>ID</th>-->
+                <th>学年</th>
+                <th>組</th>                
+				<th>リンク</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="schoolClass : ${schoolClasses}">
+<!--                <td th:text="${schoolClass.id}"></td>-->                
+                <td th:text="${schoolClass.grade.getNumber() + '年'}"></td>        
+				<td th:text="${schoolClass.name} + '組'"></td>
+				<td><a th:href="@{/list/class/detail/{id}(id=${schoolClass.id})}">詳細へ</a></td>        
+            </tr>
+        </tbody>
+    </table>
+<!--    <a th:href="@{/}">Back to Year Selection</a>-->
+</body>
+</html>
