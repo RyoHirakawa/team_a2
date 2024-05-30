@@ -33,6 +33,23 @@ public enum Grade {
 		}
 	}
 	
+	@Override
+	public String toString() {
+		switch (this) {
+		case FIRST:		
+			System.out.println("tostring : " + 1);
+			return "1";
+		case SECOND :
+			return "2";
+		case THIRD:
+			return "3";
+		case GRADUATED:
+			return "卒業";		
+		default:			
+			throw new IllegalArgumentException("Unknown grade: " + this);
+		}
+	}
+	
 	public Grade getNext() {
 		switch (this) {
 		case FIRST:

@@ -16,4 +16,18 @@ public enum Gender {
 			throw new IllegalArgumentException("Unknown grade: " + this);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		switch (this) {
+		case MALE:
+			return "MALE";
+		case FEMALE:
+			return "FEMALE";
+		case OTHER:
+			return "OTHER";
+		default:
+			throw new IllegalArgumentException("Unknown grade: " + this);
+		}
+	}
 }
