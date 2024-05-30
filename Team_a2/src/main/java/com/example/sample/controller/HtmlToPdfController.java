@@ -249,3 +249,8 @@ public class HtmlToPdfController {
 			+ "";
 
 }
+
+//buildgradleの追加
+//implementation 'org.xhtmlrenderer:flying-saucer-pdf:9.1.20'
+//implementation 'com.lowagie:itext:2.1.7'
+//implementation 'commons-io:commons-io:2.11.0'

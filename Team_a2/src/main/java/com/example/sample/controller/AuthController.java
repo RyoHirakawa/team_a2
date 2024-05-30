@@ -14,8 +14,6 @@ public class AuthController {
 	
 	@Autowired
     private LoginUserDetailService userService;
-
-	
 	
 	@GetMapping("/login")
 	public String login() {
