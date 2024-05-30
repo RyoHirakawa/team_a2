@@ -15,16 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sample.model.SchoolClass;
 import com.example.sample.model.Student;
-import com.example.sample.repository.SchoolClassRepository;
 import com.example.sample.service.SchoolClassService;
 import com.example.sample.service.StudentService;
 
 @Controller
 @RequestMapping("/list")
 public class ListController {
-
-	@Autowired
-	private SchoolClassRepository schoolClassRepository;
 
 	@Autowired
 	private StudentService studentService;
@@ -40,35 +36,36 @@ public class ListController {
 	@GetMapping("/class")
 	public String showClass(Model model) {
 		java.util.List<SchoolClass> schoolClasses = schoolClassService.findAll();
-		java.util.List<Integer> years = schoolClassService.findAllYears();
-		years.sort((a, b) -> b.compareTo(a));//降順ソート
-		model.addAttribute("schoolClasses", schoolClasses);
-		model.addAttribute("years", years);
+//		java.util.List<Integer> years = schoolClassService.findAllYears();
+//		years.sort((a, b) -> b.compareTo(a));//降順ソート
+		model.addAttribute("schoolClasses", schoolClasses);		
 		return "list/class/showClass";
 	}
-
-	@GetMapping("/class/{year}")
-	public String showClassByYear(@PathVariable int year, Model model) {
-		System.out.println(year + "年度の詳細を表示するページをマッピングしたい");
-		java.util.List<SchoolClass> schoolClasses = schoolClassService.findByYear(year);
-		System.out.println(schoolClasses);
+	
+	@GetMapping("/class/all")
+	public String showAllClass(Model model) {
+		java.util.List<SchoolClass> schoolClasses = schoolClassService.findAll();
+		
 		model.addAttribute("schoolClasses", schoolClasses);
-		model.addAttribute("year", year);
-		System.out.println(schoolClasses.toString());
-		return "list/class/showClassByYear";
+		return "list/class/showAllClass";
 	}
 
+//	@GetMapping("/class/{year}")
+//	public String showClassByYear(@PathVariable int year, Model model) {
+//		java.util.List<SchoolClass> schoolClasses = schoolClassService.findByYear(year);
+//		model.addAttribute("schoolClasses", schoolClasses);
+//		model.addAttribute("year", year);
+//		return "list/class/showClassByYear";
+//	}
+
 	@GetMapping("/class/create")
-	public String createSchoolClass() {
-		System.out.println("list/class/createへのアクセス");
+	public String createSchoolClass() {		
 		return "list/class/createClass";
 	}
 
 	@PostMapping("/class/save")
 	public String saveSchoolClass(SchoolClass schoolClass) {
-		System.out.println(schoolClass);
-		schoolClassRepository.save(schoolClass);
-		System.out.println("saveまで実行");
+		schoolClassService.save(schoolClass);
 		return "redirect:/list/class/create";
 	}
 
