@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -22,11 +23,17 @@ public class SecurityConfig {
 				.permitAll()) //  フォーム認証画面は認証不要
 				.authorizeHttpRequests(authz -> authz						
 						.requestMatchers("/css/**", "/login", "/signup", "/register").permitAll() // CSSファイルは認証不要          
-						.requestMatchers("/").permitAll() //  トップページは認証不要
+//						.requestMatchers("/").permitAll() //  トップページは認証不要
 						.requestMatchers("/create/**").hasRole("ADMIN") // アクセス制限
 						.requestMatchers("/delete/**").hasRole("ADMIN") // アクセス制限
 						.anyRequest().authenticated() //  他のURLはログイン後アクセス可能
-				);
+						
+				)
+				 .logout(logout -> {
+		        	  logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		              .logoutSuccessUrl("/login");
+		           }
+		          );
 
 		return http.build();
 	}

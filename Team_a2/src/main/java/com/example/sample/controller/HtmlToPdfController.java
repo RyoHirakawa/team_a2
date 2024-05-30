@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class HtmlToPdfController {
 
-	@GetMapping("/")
+	@GetMapping("/pdf")
 	public String index() {
 		return "templateedit";
 	}

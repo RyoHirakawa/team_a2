@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -125,6 +125,7 @@
             <a href="kekka">テスト結果</a>
             <a href="print">指導案や連絡プリント</a>
             <a href="renraku_add">連絡事項追加</a>
+			<a th:href="@{/logout}">ログアウト</a>
         </nav>
         <div class="container">
             <div class="notice">
