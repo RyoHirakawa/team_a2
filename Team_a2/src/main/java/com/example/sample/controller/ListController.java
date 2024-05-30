@@ -87,6 +87,7 @@ public class ListController {
 			return "error";
 		}
 	}
+	
 	@GetMapping("/student")
 	public String showStudent(Model model) {
 		//		java.util.List<Student> students = studentService.getAll();
