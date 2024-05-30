@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム画面 - 教師向けアプリ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #ffcc00;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            width: 100%;
+            position: relative;
+        }
+
+        .menu-icon {
+            display: none;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;            
+            /* 他の要素よりも前面に表示する */
+        }
+
+        .main {
+            display: flex;
+            flex: 1;
+        }
+
+        nav {
+            background-color: #333;
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 60px;
+            transform: translateX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            margin-left: 200px;
+            padding: 2rem;
+            width: calc(100% - 200px);
+            overflow-y: auto;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .notice {
+            background-color: #fff3cd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+                z-index: 1000;
+            }
+
+            nav {
+                transform: translateX(-100%);
+            }
+
+            nav.active {
+                transform: translateX(0);
+            }
+
+            .container {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="menu-icon" id="close-icon" onclick="toggleMenu()" style="display: none;">&#10005;</div>
+        教師向けアプリ - ホーム
+    </header>
+    <div class="main">
+        <nav id="sidebar">
+            <a href="/">ホーム</a>
+            <a href="meibo">名簿</a>
+            <a href="share">授業資料共有</a>
+            <a href="kekka">テスト結果</a>
+            <a href="print">指導案や連絡プリント</a>
+            <a href="renraku_add">連絡事項追加</a>
+        </nav>
+        <div class="container">
+            <div class="notice">
+                <h2>学校からのお知らせ</h2>
+                <p>ここに学校全体の連絡事項を表示します。例：行事予定、緊急連絡、重要なお知らせなど。</p>
+            </div>
+            <div class="notice">
+                <h3>教員会議のお知らせ</h3>
+                <p>6月15日（月）：定例教員会議（15:00～17:00）</p>
+                <p>6月20日（土）：保護者会準備会議（14:00～16:00）</p>
+            </div>
+            <div class="notice">
+                <h3>研修のご案内</h3>
+                <p>7月1日（水）：ICT教育研修（10:00～12:00）</p>
+                <p>7月10日（金）：生徒指導研修（13:00～16:00）</p>
+            </div>
+            <div class="notice">
+                <h3>重要なお知らせ</h3>
+                <p>新型コロナウイルス感染拡大防止のため、9月の校外学習は中止となりました。代替としてオンライン学習を実施予定です。</p>
+            </div>
+            <div class="notice">
+                <h3>教員健康診断</h3>
+                <p>8月5日（水）：教員健康診断（9:00～11:00）</p>
+                <p>対象者には個別に詳細を連絡します。</p>
+            </div>
+            <div class="notice">
+                <h3>クラブ活動指導</h3>
+                <p>サッカー部：毎週火・木曜日（16:00～18:00）</p>
+                <p>吹奏楽部：毎週月・金曜日（16:00～18:00）</p>
+                <p>クラブ指導担当の先生は出欠確認をお願いします。</p>
+            </div>
+            <div class="notice">
+                <h3>その他</h3>
+                <p>今週の清掃担当：1年3組</p>
+                <p>来週の行事：運動会準備（全学年参加）</p>
+            </div>
+            <div class="card">
+                <h2>名簿</h2>
+                <p>学生の情報を管理し、カテゴリ分けすることができます。</p>
+            </div>
+            <div class="card">
+                <h2>授業資料共有</h2>
+                <p>授業に必要な資料をアップロードして共有できます。</p>
+            </div>
+            <div class="card">
+                <h2>テスト結果</h2>
+                <p>テストの結果を入力し、一覧表示ができます。</p>
+            </div>
+            <div class="card">
+                <h2>指導案や連絡プリント</h2>
+                <p>指導案や連絡プリントのテンプレートを作成し、印刷できます。</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            var sidebar = document.getElementById('sidebar');
+            var menuIcon = document.getElementById('menu-icon');
+            var closeIcon = document.getElementById('close-icon');
+            sidebar.classList.toggle('active');
+            if (sidebar.classList.contains('active')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

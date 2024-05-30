@@ -55,7 +55,7 @@
 
 <body>
 	<div class="container">
-		<form action="/generatePdf" method="post">
+		<form action="/TestPdf" method="post" onsubmit="return checkFileName()">
 			<div class="questions">
 				<div class="question-group">
 					<h3>大問１</h3>
@@ -150,6 +150,15 @@
 			<div class="answer-box">20.</div>
 		</div>
 	</div>
+	<script>
+		function checkFileName() {
+			var fileInput = document.getElementById("fileInput");
+			if (fileInput.value.trim() === "") {
+				fileInput.value = "test";  // デフォルトのファイル名を設定
+			}
+			return true;
+		}
+	</script>
 </body>
 
 </html>

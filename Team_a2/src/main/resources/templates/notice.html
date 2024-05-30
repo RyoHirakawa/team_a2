@@ -8,13 +8,14 @@
     <a href="/Notice/add">連絡事項追加</a>
     <div>
         <ul>
-			<form th:action="@{/Notice/delite}" th:object="${notice}" method="post">
-	            <li th:each="notice : ${allNotices}">
-	                <h2 th:text="${notice.title}"></h2>
-	                <p th:text="${notice.content}"></p>
-					<a th:href="@{Notice/delete/{id}(id=${notice.id})}">Delete</a>
-	            </li>
-			</form>
+			<li th:each="notice : ${allNotices}">
+               <h2 th:text="${notice.title}"></h2>
+               <p th:text="${notice.content}"></p>
+               <p>作成日: <span th:text="${notice.createdAt}"></span></p>
+               <p>編集日: <span th:text="${notice.updatedAt}"></span></p>
+               <a th:href="@{/Notice/edit/{id}(id=${notice.id})}">編集</a>
+               <a th:href="@{/Notice/delete/{id}(id=${notice.id})}">削除</a>
+	        </li>
         </ul>
     </div>
 </body>
