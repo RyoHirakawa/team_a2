@@ -33,14 +33,14 @@ public class ListController {
 		return "list/top";
 	}
 
-	@GetMapping("/class")
-	public String showClass(Model model) {
-		java.util.List<SchoolClass> schoolClasses = schoolClassService.findAll();
+//	@GetMapping("/class")
+//	public String showClass(Model model) {
+//		java.util.List<SchoolClass> schoolClasses = schoolClassService.findAll();
 //		java.util.List<Integer> years = schoolClassService.findAllYears();
 //		years.sort((a, b) -> b.compareTo(a));//降順ソート
-		model.addAttribute("schoolClasses", schoolClasses);		
-		return "list/class/showClass";
-	}
+//		model.addAttribute("schoolClasses", schoolClasses);		
+//		return "list/class/showClass";
+//	}
 	
 	@GetMapping("/class/all")
 	public String showAllClass(Model model) {
@@ -85,12 +85,12 @@ public class ListController {
 		}
 	}
 	
-	@GetMapping("/student")
-	public String showStudent(Model model) {
+//	@GetMapping("/student")
+//	public String showStudent(Model model) {
 		//		java.util.List<Student> students = studentService.getAll();
 		//		model.addAttribute();
-		return "/list/student/showStudent";
-	}
+//		return "/list/student/showStudent";
+//	}
 
 	@GetMapping("/student/all")
 	public String showAllStudent(Model model) {
