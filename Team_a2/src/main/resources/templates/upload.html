@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>指導案や連絡プリント - 教師向けアプリ</title>
+    <title>アップロード - 教師向けアプリ</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -72,8 +72,8 @@
         form {
             margin-top: 1rem;
         }
-        form input[type="text"],
-        form textarea {
+        form input[type="file"],
+        form select {
             padding: 0.5rem;
             margin-bottom: 1rem;
             width: 100%;
@@ -96,46 +96,50 @@
 </head>
 <body>
     <header>
-        教師向けアプリ - 指導案や連絡プリント
+        教師向けアプリ - アップロード
     </header>
     <div class="main">
         <nav>
-
-           <a href="/">ホーム</a>
-
+            <a href="home">ホーム</a>
             <a href="meibo">名簿</a>
             <a href="share">授業資料共有</a>
             <a href="kekka">テスト結果</a>
             <a href="print">指導案や連絡プリント</a>
-            <a href="renraku_add">連絡事項追加</a>
+            <a href="content_input">内容入力</a>
         </nav>
         <div class="container">
             <div class="card">
-                <h2>指導案や連絡プリント</h2>
-                <p>指導案や連絡プリントのテンプレートを作成し、印刷できます。</p>
-                <form action="submit_print.php" method="post">
-                    <label for="document-title">タイトル:</label>
-                    <input type="text" id="document-title" name="document-title" required>
-                    <label for="document-content">内容:</label>
-                    <textarea id="document-content" name="document-content" rows="10" required></textarea>
-                    <button type="submit" class="btn">保存</button>
+                <h2>資料をアップロード</h2>
+                <form action="upload_file" method="post" enctype="multipart/form-data">
+                    <label for="category">カテゴリを選択してください:</label>
+                    <select id="category" name="category">
+                        <option value="資料">資料</option>
+                        <option value="テスト">テスト</option>
+                        <option value="指導案">指導案</option>
+                        <option value="連絡プリント">連絡プリント</option>
+                    </select>
+                    <label for="file">ファイルを選択してください:</label>
+                    <input type="file" id="file" name="file">
+                    <button type="submit" class="btn">アップロード</button>
                 </form>
-                <h3>保存済みの指導案や連絡プリント</h3>
+                <h3>アップロード済みファイル</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th>タイトル</th>
-                            <th>作成日</th>
+                            <th>ファイル名</th>
+                            <th>カテゴリ</th>
+                            <th>アップロード日</th>
                             <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>指導案1</td>
+                            <td>資料1.pdf</td>
+                            <td>資料</td>
                             <td>2024-05-24</td>
-                            <td><a href="#">表示</a> | <a href="#">編集</a> | <a href="#">削除</a></td>
+                            <td><a href="#">ダウンロード</a> | <a href="#">削除</a></td>
                         </tr>
-                        <!-- 追加の指導案や連絡プリント情報をここに挿入 -->
+                        <!-- 追加のファイル情報をここに挿入 -->
                     </tbody>
                 </table>
             </div>

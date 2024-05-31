@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>検索結果</title>
+</head>
+
+<body>
+	<h1>検索結果一覧: <span th:text="${category}"></span></h1>
+
+	<!-- 検索フォーム -->
+	<form action="/template/search" method="get">
+		<input type="text" name="category" placeholder="カテゴリー" />
+		<button type="submit">Search</button>
+	</form>
+
+	<!-- 画像リスト -->
+	<div th:if="${not #lists.isEmpty(templates)}">
+		<div th:each="template : ${templates}">
+			<img th:src="@{${template.path}}" alt="資料" />
+		</div>
+	</div>
+	<div th:if="${#lists.isEmpty(templates)}">
+		<p>このカテゴリーのテンプレートはありません。</p>
+	</div>
+	<form th:action="@{/template/}" method="get">
+		<button type="submit">戻る</button>
+	</form>
+</body>
+
+</html>

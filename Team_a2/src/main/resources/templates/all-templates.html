@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>テンプレート一覧</title>
+</head>
+
+<body>
+	<h1>テンプレート一覧</h1>
+	<div th:each="category, template : ${templates}">
+		<h2 th:text="${category}">カテゴリー</h2>
+		<div th:each="document : ${template.value}">
+			<img th:src="@{${document.path}}" th:alt="${document.title}" />
+			<p th:text="${document.title}"></p>
+		</div>
+	</div>
+
+	<form th:action="@{/template/}" method="get">
+		<button type="submit">テンプレートの追加</button>
+	</form>
+
+	<form th:action="@{/template/search}" method="get">
+		<input type="text" name="category" placeholder="カテゴリー" />
+		<button type="submit">検索</button>
+	</form>
+
+</body>
+
+</html>
