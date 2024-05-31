@@ -35,14 +35,6 @@ public class ListController {
 		return "list/top";
 	}
 
-//	@GetMapping("/class")
-//	public String showClass(Model model) {
-//		java.util.List<SchoolClass> schoolClasses = schoolClassService.findAll();
-//		java.util.List<Integer> years = schoolClassService.findAllYears();
-//		years.sort((a, b) -> b.compareTo(a));//降順ソート
-//		model.addAttribute("schoolClasses", schoolClasses);		
-//		return "list/class/showClass";
-//	}
 	
 	@GetMapping("/class/all")
 	public String showAllClass(Model model) {
@@ -52,13 +44,6 @@ public class ListController {
 		return "list/class/showAllClass";
 	}
 
-//	@GetMapping("/class/{year}")
-//	public String showClassByYear(@PathVariable int year, Model model) {
-//		java.util.List<SchoolClass> schoolClasses = schoolClassService.findByYear(year);
-//		model.addAttribute("schoolClasses", schoolClasses);
-//		model.addAttribute("year", year);
-//		return "list/class/showClassByYear";
-//	}
 
 	@GetMapping("/class/create")
 	public String createSchoolClass() {				
@@ -86,13 +71,7 @@ public class ListController {
 			return "error";
 		}
 	}
-	
-//	@GetMapping("/student")
-//	public String showStudent(Model model) {
-		//		java.util.List<Student> students = studentService.getAll();
-		//		model.addAttribute();
-//		return "/list/student/showStudent";
-//	}
+
 	@GetMapping("/student/all")
 	public String showAllStudent(
 			@RequestParam(required = false) String name,

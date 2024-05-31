@@ -9,8 +9,25 @@
 	<link rel="stylesheet" href="/css/base.css">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 	<style>
+		.tmp {
+			display: flex;
+		}
+
+		.btn {
+			margin: 0px;
+			margin-left: 4px;
+		}
+		.btn-gray {
+			background-color: rgb(230, 230, 230);
+			color: black;
+		}
+		.btn-tmp {
+			width: 100px;	
+			margin: 5px; 		
+		}
 	</style>
 </head>
+
 <body>
 
 	<header>
@@ -21,6 +38,8 @@
 		<div class="container">
 			<div class="card">
 				<h1>在籍生徒</h1>
+				<a class="btn" th:href="@{/list/student/create}">生徒を追加</a>
+				<h2>検索</h2>
 				<form th:action="@{/list/student/all}" method="get">
 					<span>名前:</span>
 					<input type="text" name="name" th:value="${name}">
@@ -37,7 +56,7 @@
 							th:checked="${grade == null || grade == ''}"><label for="none">指定なし</label>
 					</div>
 					<span>クラス:</span>
-					<input type="text" name="schoolClass" th:value="${schoolClass}">組
+					<input type="text" name="schoolClass" th:value="${schoolClass}">
 
 					<div>
 						<span>性別:</span>
@@ -51,9 +70,9 @@
 							th:checked="${gender == null || gender == ''}"><label for="none_gender">指定なし</label>
 					</div>
 
-					<button class="btn" type="submit">絞り込み</button>
+					<button class="btn btn-tmp" type="submit">絞り込み</button>
 
-					<a class="btn btn-gray" th:href="@{/list/student/all}">
+					<a class="btn btn-gray btn-tmp" th:href="@{/list/student/all}">
 						すべてクリア
 					</a>
 				</form>
@@ -80,17 +99,23 @@
 								<td th:text="${student.birthdate}"></td>
 								<td th:text="${student.gender.getName()}"></td>
 								<td>
-									<a class="btn" th:href="@{/list/student/edit/{id}(id=${student.id})}">編集</a>
-									<form th:action="@{/list/student/delete}" method="post">
-										<input type="hidden" name="studentId" th:value="${student.id}">
-										<button class="btn" type="submit">削除</button>
-									</form>
+									<div class="tmp">
+										<!--										<a class="btn" th:href="@{/list/student/edit/{id}(id=${student.id})}">編集</a>-->
+										<form th:action="@{/list/student/edit/{id}(id=${student.id})}" method="get">
+											<input type="hidden" name="studentId" th:value="${student.id}">
+											<button class="btn" type="submit">編集</button>
+										</form>
+										<form th:action="@{/list/student/delete}" method="post">
+											<input type="hidden" name="studentId" th:value="${student.id}">
+											<button class="btn" type="submit">削除</button>
+										</form>
+									</div>
 								</td>
 							</tr>
 						</th:block>
 					</tbody>
 				</table>
-				<a class="btn" th:href="@{/list/student/create}">生徒を追加</a>
+				
 			</div>
 
 		</div>

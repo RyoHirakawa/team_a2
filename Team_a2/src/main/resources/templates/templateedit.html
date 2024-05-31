@@ -55,8 +55,8 @@
 		</div>
 	</header>
 	<div class="main">
-		<div th:replace="fragments/nav :: nav_fragment"></div>
-		<div class="container">
+		<div th:replace="fragments/nav :: nav_fragment"></div>		
+		<div class="container">			
 			<div class="card">
 				<form th:action="@{/TestPdf}" method="post" onsubmit="return checkFileName()">
 					<div class="questions">

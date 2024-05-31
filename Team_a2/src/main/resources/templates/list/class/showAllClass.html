@@ -24,7 +24,6 @@
 				<table>
 					<thead>
 						<tr>
-							<th>ID</th>
 							<th>学年</th>
 							<th>組</th>
 							<th>アクション</th>
@@ -32,7 +31,6 @@
 					</thead>
 					<tbody>
 						<tr th:each="schoolClass : ${schoolClasses}">
-							<td th:text="${schoolClass.id}"></td>
 							<td th:text="${schoolClass.grade.getNumber()} + '年'"></td>
 							<td th:text="${schoolClass.name} + '組'"></td>
 							<td><a class="btn" th:href="@{/list/class/detail/{id}(id=${schoolClass.id})}">詳細へ</a></td>

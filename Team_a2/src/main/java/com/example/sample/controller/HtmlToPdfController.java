@@ -27,10 +27,6 @@ public class HtmlToPdfController {
 		return "templateedit";
 	}
 
-//	@GetMapping("/new")
-//	public String index2() {
-//		return "new";
-//	}
 
 	@PostMapping("/TestPdf")
 	public void generatePdf(
