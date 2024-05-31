@@ -8,15 +8,18 @@
 	<title>教師向けアプリ - </title>
 	<link rel="stylesheet" href="/css/base.css">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-
+	<link rel="icon" th:href="@{/images/favicon.ico}" id="favicon">
+	<link rel="apple-touch-icon" sizes="180x180" th:href="@{/images/new_idea_icon.png}">
 	<style>
-
 	</style>
 </head>
 
 <body>
 	<header>
-		教師向けアプリ - ホーム
+		<h1 class="app_name">SmartEdu - ホーム</h1>
+		<div class="logo_box">
+			<img th:src="@{/images/new_idea_icon.png}" width="30" height="30">
+		</div>
 	</header>
 	<div class="main">
 		<div th:replace="fragments/nav :: nav_fragment"></div>

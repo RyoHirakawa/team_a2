@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="ja">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>教師向けアプリ - </title>
-	<link rel="stylesheet" href="/css/base.css">
+	<title>連絡事項追加 - 教師向けアプリ</title>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 	<style>
 		body {
@@ -81,77 +79,46 @@
 			margin-top: 1rem;
 		}
 
-		.btn-link {
-			display: inline-block;
-			margin-top: 1rem;
-		}
-
 		form {
 			margin-top: 1rem;
 		}
 
-		form input[type="file"] {
+		form input[type="text"],
+		form textarea {
 			padding: 0.5rem;
 			margin-bottom: 1rem;
-		}
-
-		table {
 			width: 100%;
-			border-collapse: collapse;
-			margin-top: 1rem;
-		}
-
-		th,
-		td {
-			padding: 0.5rem;
-			border: 1px solid #ddd;
-			text-align: left;
-		}
-
-		th {
-			background-color: #f2f2f2;
+			box-sizing: border-box;
 		}
 	</style>
-
 </head>
 
 <body>
 	<header>
-		<h1 class="app_name">SmartEdu - 授業資料共有</h1>
-		<div class="logo_box">
-			<img th:src="@{/images/new_idea_icon.png}" width="30" height="30">
-		</div>
+		教師向けアプリ - 連絡事項追加
 	</header>
 	<div class="main">
-		<div th:replace="fragments/nav :: nav_fragment"></div>
+		<nav>
+			<a href="/">ホーム</a>
+			<a href="/meibo">名簿</a>
+			<a href="/share">授業資料共有</a>
+			<a href="/kekka">テスト結果</a>
+			<a href="/print">指導案や連絡プリント</a>
+			<a href="/Notice">連絡事項</a>
+		</nav>
 		<div class="container">
+			<a href="/Notice/add">連絡事項追加</a>
 			<div class="card">
-				<h2>授業資料共有</h2>
-				<p>授業に必要な資料をアップロードして共有できます。</p>
-				<a href="upload" class="btn btn-link">アップロードページへ</a>
-				<form action="upload_file" method="post" enctype="multipart/form-data">
-					<label for="file">資料を選択してください:</label>
-					<input type="file" id="file" name="file">
-					<button type="submit" class="btn">アップロード</button>
-				</form>
-				<h3>アップロード済み資料</h3>
-				<table>
-					<thead>
-						<tr>
-							<th>ファイル名</th>
-							<th>アップロード日</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>資料1.pdf</td>
-							<td>2024-05-24</td>
-							<td><a href="#">ダウンロード</a> | <a href="#">削除</a></td>
-						</tr>
-						<!-- 追加の資料情報をここに挿入 -->
-					</tbody>
-				</table>
+				<ul>
+					<li th:each="notice : ${allNotices}">
+						<h2 th:text="${notice.title}"></h2>
+						<p th:text="${notice.content}"></p>
+						<p>作成日: <span th:text="${notice.createdAt}"></span></p>
+						<p>編集日: <span th:text="${notice.updatedAt}"></span></p>
+						<a th:href="@{/Notice/edit/{id}(id=${notice.id})}">編集</a>
+						<a th:href="@{/Notice/delete/{id}(id=${notice.id})}">削除</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

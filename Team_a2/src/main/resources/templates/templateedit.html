@@ -31,9 +31,7 @@
 			margin-bottom: 30px;
 		}
 
-		.question {
-
-		}
+		.question {}
 
 		.questionbox {
 			width: 700px;
@@ -51,13 +49,16 @@
 
 <body>
 	<header>
-		教師向けアプリ - テスト作成
+		<h1 class="app_name">SmartEdu - テスト作成</h1>
+		<div class="logo_box">
+			<img th:src="@{/images/new_idea_icon.png}" width="30" height="30">
+		</div>
 	</header>
 	<div class="main">
 		<div th:replace="fragments/nav :: nav_fragment"></div>
 		<div class="container">
 			<div class="card">
-				<form  th:action="@{/TestPdf}" method="post" onsubmit="return checkFileName()">
+				<form th:action="@{/TestPdf}" method="post" onsubmit="return checkFileName()">
 					<div class="questions">
 						<div class="question-group">
 							<h3>大問１</h3>

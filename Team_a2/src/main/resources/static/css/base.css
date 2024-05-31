@@ -16,6 +16,21 @@ header {
 	text-align: center;
 	font-size: 1.5rem;
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.app_name {
+	margin: 0;
+	font-size: 20px;
+}
+
+.logo_box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 12px;
 }
 
 .main {
