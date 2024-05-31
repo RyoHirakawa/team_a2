@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>テスト問題用紙</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 20px;
+		}
+
+		.container {
+			display: flex;
+		}
+
+		.questions {
+			width: 850px;
+			flex: 2;
+		}
+
+		.answers {
+			flex: 1;
+			margin-left: 20px;
+			border-left: 2px solid #000;
+			padding-left: 20px;
+		}
+
+		.question-group {
+			width: 750px;
+			margin-bottom: 30px;
+		}
+
+		.question {
+
+			margin-bottom: 10px;
+		}
+
+		.questionbox {
+			width: 700px;
+			height: 20px;
+
+		}
+
+		.answer-box {
+			margin-bottom: 10px;
+			border: 1px solid #000;
+			padding: 10px;
+			height: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<form th:action="@{/TestPdf}" method="post" onsubmit="return checkFileName()">
+			<div class="questions">
+				<div class="question-group">
+					<h3>大問１</h3>
+					<div class="question">1. <input type="text" class="questionbox" name="content1" placeholder="問題文1">
+					</div>
+					<div class="question">2. <input type="text" class="questionbox" name="content2" placeholder="問題文2">
+					</div>
+				</div>
+				<div class="question-group">
+					<h3>大問２</h3>
+					<div class="question">3. <input type="text" class="questionbox" name="content3" placeholder="問題文3">
+					</div>
+					<div class="question">4. <input type="text" class="questionbox" name="content4" placeholder="問題文4">
+					</div>
+					<div class="question">5. <input type="text" class="questionbox" name="content5" placeholder="問題文5">
+					</div>
+				</div>
+				<div class="question-group">
+					<h3>大問３</h3>
+					<div class="question">6. <input type="text" class="questionbox" name="content6" placeholder="問題文6">
+					</div>
+					<div class="question">7. <input type="text" class="questionbox" name="content7" placeholder="問題文7">
+					</div>
+					<div class="question">8. <input type="text" class="questionbox" name="content8" placeholder="問題文8">
+					</div>
+					<div class="question">9. <input type="text" class="questionbox" name="content9" placeholder="問題文9">
+					</div>
+					<div class="question">10. <input type="text" class="questionbox" name="content10"
+							placeholder="問題文10"></div>
+				</div>
+				<div class="question-group">
+					<h3>大問４</h3>
+					<div class="question">11. <input type="text" class="questionbox" name="content11"
+							placeholder="問題文11"></div>
+					<div class="question">12. <input type="text" class="questionbox" name="content12"
+							placeholder="問題文12"></div>
+					<div class="question">13. <input type="text" class="questionbox" name="content13"
+							placeholder="問題文13"></div>
+					<div class="question">14. <input type="text" class="questionbox" name="content14"
+							placeholder="問題文14"></div>
+				</div>
+				<div class="question-group">
+					<h3>大問５</h3>
+					<div class="question">15. <input type="text" class="questionbox" name="content15"
+							placeholder="問題文15"></div>
+					<div class="question">16. <input type="text" class="questionbox" name="content16"
+							placeholder="問題文16"></div>
+					<div class="question">17. <input type="text" class="questionbox" name="content17"
+							placeholder="問題文17"></div>
+				</div>
+				<div class="question-group">
+					<h3>大問６</h3>
+					<div class="question">18. <input type="text" class="questionbox" name="content18"
+							placeholder="問題文18"></div>
+					<div class="question">19. <input type="text" class="questionbox" name="content19"
+							placeholder="問題文19"></div>
+					<div class="question">20. <input type="text" class="questionbox" name="content20"
+							placeholder="問題文20"></div>
+				</div>
+
+				<input id="fileInput" type="text" name="file" placeholder="ファイル名">
+				<button type="submit">テンプレートを生成</button>
+			</div>
+		</form>
+		<div class="answers">
+			<h4>解答</h4>
+			<h4>大問１</h4>
+			<div class="answer-box">1.</div>
+			<div class="answer-box">2.</div>
+			<h4>大問２</h4>
+			<div class="answer-box">3.</div>
+			<div class="answer-box">4.</div>
+			<div class="answer-box">5.</div>
+			<h4>大問３</h4>
+			<div class="answer-box">6.</div>
+			<div class="answer-box">7.</div>
+			<div class="answer-box">8.</div>
+			<div class="answer-box">9.</div>
+			<div class="answer-box">10.</div>
+			<h4>大問４</h4>
+			<div class="answer-box">11.</div>
+			<div class="answer-box">12.</div>
+			<div class="answer-box">13.</div>
+			<div class="answer-box">14.</div>
+			<h4>大問５</h4>
+			<div class="answer-box">15.</div>
+			<div class="answer-box">16.</div>
+			<div class="answer-box">17.</div>
+			<h4>大問６</h4>
+			<div class="answer-box">18.</div>
+			<div class="answer-box">19。</div>
+			<div class="answer-box">20.</div>
+		</div>
+	</div>
+	<script>
+		function checkFileName() {
+			var fileInput = document.getElementById("fileInput");
+			if (fileInput.value.trim() === "") {
+				fileInput.value = "test";  // デフォルトのファイル名を設定
+			}
+			return true;
+		}
+	</script>
+</body>
+
+</html>

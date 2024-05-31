@@ -1,0 +1,32 @@
+<!-- classStudents.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Students</title>
+</head>
+<body>
+<!--	<h1 th:text="${schoolClass}"></h1>-->
+<!--	<h1 th:text="${students}"></h1>-->
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birthdate</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>          
+            <tr th:each="student : ${students}">
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.birthdate}"></td>
+                <td th:text="${student.gender.getName()}"></td>                  
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

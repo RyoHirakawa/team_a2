@@ -23,6 +23,19 @@
 			text-align: center;
 			font-size: 1.5rem;
 			width: 100%;
+
+			position: relative;
+		}
+
+		.menu-icon {
+			display: none;
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			cursor: pointer;
+			font-size: 1.5rem;
+			z-index: 1000;
+
 		}
 
 		.main {
@@ -38,6 +51,10 @@
 			top: 0;
 			left: 0;
 			padding-top: 60px;
+
+			transform: translateX(0);
+			transition: transform 0.3s ease-in-out;
+
 		}
 
 		nav a {
@@ -68,27 +85,63 @@
 			margin: 1rem 0;
 		}
 
-		.btn {
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		th, td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			text-align: left;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		button {
 			background-color: #4CAF50;
 			color: white;
 			padding: 0.5rem 1rem;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
+			border: none;
 			border-radius: 4px;
-			margin-top: 1rem;
+			cursor: pointer;
 		}
 
-		form {
-			margin-top: 1rem;
+		@media (max-width: 768px) {
+			.menu-icon {
+				display: block;
+			}
+
+			nav {
+				transform: translateX(-100%);
+			}
+
+			nav.active {
+				transform: translateX(0);
+			}
+
+			.container {
+				margin-left: 0;
+				width: 100%;
+			}
+
 		}
 	</style>
 </head>
 
 <body>
-	<header>授業資料</header>
+
+	<header>
+		<div class="menu-icon" id="menu-icon" onclick="toggleMenu()">&#9776;</div>
+		<div class="menu-icon" id="close-icon" onclick="toggleMenu()" style="display: none;">&#10005;</div>
+		授業資料
+	</header>
 	<div class="main">
-		<nav>
+		<nav id="sidebar">
+
 			<a href="home">ホーム</a>
 			<a href="meibo">名簿</a>
 			<a href="share">授業資料共有</a>
@@ -117,13 +170,29 @@
 					</tbody>
 				</table>
 
+
 				<form th:action="@{/documents/}" method="get">
 					<button type="submit">戻る</button>
 				</form>
-
 			</div>
 		</div>
 	</div>
+	<script>
+		function toggleMenu() {
+			var sidebar = document.getElementById('sidebar');
+			var menuIcon = document.getElementById('menu-icon');
+			var closeIcon = document.getElementById('close-icon');
+			sidebar.classList.toggle('active');
+			if (sidebar.classList.contains('active')) {
+				menuIcon.style.display = 'none';
+				closeIcon.style.display = 'block';
+			} else {
+				menuIcon.style.display = 'block';
+				closeIcon.style.display = 'none';
+			}
+		}
+	</script>
+
 </body>
 
 </html>
