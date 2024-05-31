@@ -27,12 +27,13 @@
 			<div class="">
 				<h1>学校からのお知らせ</h1>
 			</div>
+			<p th:if="${notices.empty}">現在お知らせはありません</p>			
 			<div class="notice" th:each="notice : ${notices}">
 				<h2 th:text="${notice.title}"></h2>
 				<p th:text="${notice.content}"></p>
 				<p>作成日: <span th:text="${notice.createdAt}"></span></p>
 				<p>最終更新: <span th:text="${notice.updatedAt}"></span></p>
-			</div>
+			</div>			
 			<!--			<div class="notice">-->
 			<!--				<h3>教員会議のお知らせ</h3>-->
 			<!--				<p>6月15日（月）：定例教員会議（15:00～17:00）</p>-->
@@ -63,6 +64,7 @@
 			<!--				<p>今週の清掃担当：1年3組</p>-->
 			<!--				<p>来週の行事：運動会準備（全学年参加）</p>-->
 			<!--			</div>-->
+			<h1>リンク</h1>
 			<a th:href="@{/list}">
 				<div class="card">
 					<h2>名簿</h2>

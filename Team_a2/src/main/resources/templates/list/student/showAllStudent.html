@@ -81,9 +81,9 @@
 								<td th:text="${student.gender.getName()}"></td>
 								<td>
 									<a class="btn" th:href="@{/list/student/edit/{id}(id=${student.id})}">編集</a>
-									<form class="btn" th:action="@{/list/student/delete}" method="post">
+									<form th:action="@{/list/student/delete}" method="post">
 										<input type="hidden" name="studentId" th:value="${student.id}">
-										<button type="submit">削除</button>
+										<button class="btn" type="submit">削除</button>
 									</form>
 								</td>
 							</tr>
@@ -91,7 +91,6 @@
 					</tbody>
 				</table>
 				<a class="btn" th:href="@{/list/student/create}">生徒を追加</a>
-
 			</div>
 
 		</div>

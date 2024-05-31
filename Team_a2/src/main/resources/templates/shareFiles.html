@@ -25,7 +25,7 @@
 				<!-- 検索フォーム -->
 				<form action="/documents/search" method="get">
 					<input type="text" name="category" placeholder="カテゴリー" />
-					<button type="submit">Search</button>
+					<button class="btn" type="submit">Search</button>
 				</form>
 
 				<!-- 画像リスト -->
@@ -38,7 +38,7 @@
 					<p>このカテゴリーの資料はありません。</p>
 				</div>
 				<form th:action="@{/documents/}" method="get">
-					<button type="submit">戻る</button>
+					<button class="btn" type="submit">戻る</button>
 				</form>
 			</div>
 		</div>

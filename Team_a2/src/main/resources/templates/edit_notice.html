@@ -26,10 +26,10 @@
 					<label for="content">本文:</label>
 					<textarea id="content" th:field="*{content}"></textarea><br />
 
-					<p>Created at: <span th:text="${notice.createdAt}"></span></p>
-					<p>Updated at: <span th:text="${notice.updatedAt}"></span></p>
+					<p>作成日: <span th:text="${notice.createdAt}"></span></p>
+					<p>最終更新: <span th:text="${notice.updatedAt}"></span></p>
 
-					<button type="submit">更新する</button>
+					<button class="btn" type="submit">更新する</button>
 				</form>
 			</div>
 		</div>

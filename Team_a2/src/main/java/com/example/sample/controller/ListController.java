@@ -61,8 +61,8 @@ public class ListController {
 //	}
 
 	@GetMapping("/class/create")
-	public String createSchoolClass() {		
-		return "list/class/createClass";
+	public String createSchoolClass() {				
+		return "/list/class/createClass";
 	}
 
 	@PostMapping("/class/save")
@@ -112,10 +112,10 @@ public class ListController {
 	}
 
 	@GetMapping("/student/create")
-	public String createStudent(Model model) {		
+	public String createStudent(Model model) {				
 		List<SchoolClass> schoolClasses = schoolClassService.getAllSchoolClasses();
 		model.addAttribute("schoolClasses", schoolClasses);		
-		return "/list/student/createStudent";
+		return "/list/student/createStudent";		
 	}
 
 	@PostMapping("/student/save")
